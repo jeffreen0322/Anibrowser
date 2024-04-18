@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           Anibase
         </a>
         <button
@@ -22,12 +22,12 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <a className="nav-link active" aria-current="page" href="/">
                 Home
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" href="/">
+              <a className="nav-link active" href="/top">
                 Top Anime
               </a>
             </li>
