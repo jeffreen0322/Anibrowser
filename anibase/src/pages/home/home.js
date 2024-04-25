@@ -1,4 +1,5 @@
 import React from "react";
+import "./home.css";
 
 const items = [
   {
@@ -13,30 +14,30 @@ const items = [
   },
 ];
 
-function HomePage() {
+export default function HomePage() {
   return <About />;
 }
 
 function About() {
   return (
-    <div>
+    <div className="about">
       <Title />
+      <ItemList items={items} />
     </div>
   );
 }
 
 function Title() {
   return (
-    <div>
+    <div className="title-header">
       <h1>Anibase: Anime listings done right</h1>
-      <ItemList items={items} />
     </div>
   );
 }
 
 function ItemList({ items }) {
   return (
-    <div>
+    <div className="item-list">
       {items.map((listItem) => (
         <Item image={listItem.icon} description={listItem.descriptor} />
       ))}
@@ -46,11 +47,9 @@ function ItemList({ items }) {
 
 function Item({ image, description }) {
   return (
-    <div>
+    <div className="item">
       <img src={image} alt="icon" />
       <p>{description}</p>
     </div>
   );
 }
-
-export default HomePage;
