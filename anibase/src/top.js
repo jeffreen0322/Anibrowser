@@ -23,19 +23,32 @@ function TopList() {
     GetTopAnime();
   }, []);
 
+  console.log(topAnime);
+
   return (
     <div>
       <ul>
         {topAnime.map((anime) => (
-          <AnimeEntry key={anime.title} title={anime.title} />
+          <AnimeEntry
+            key={anime.title}
+            title={anime.title}
+            episodes={anime.episodes}
+            image={anime.images.jpg.image_url}
+          />
         ))}
       </ul>
     </div>
   );
 }
 
-function AnimeEntry(props) {
-  return <li>{props.title}</li>;
+function AnimeEntry({ title, episodes, image }) {
+  return (
+    <li>
+      <p>{title}</p>
+      <img src={image} alt={title} />
+      <p>Episodes: {episodes}</p>
+    </li>
+  );
 }
 
 export default TopPage;
