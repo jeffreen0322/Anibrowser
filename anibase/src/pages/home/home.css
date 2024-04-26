@@ -16,6 +16,11 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: grey;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 7rem;
+  margin-right: 7rem;
 }
 
 .item-list {
@@ -23,7 +28,7 @@ code {
   grid-template-rows: auto auto;
   grid-template-columns: auto auto;
   text-align: center;
-  gap: 5rem;
+  gap: 3rem;
 }
 
 .item:nth-child(3) {
@@ -33,5 +38,6 @@ code {
 .item {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  justify-content: center;
+  gap: 1rem;
 }
