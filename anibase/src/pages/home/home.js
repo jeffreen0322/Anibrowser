@@ -46,6 +46,7 @@ function ItemList({ items }) {
     <div className="item-list">
       {items.map((listItem) => (
         <Item
+          key={listItem.className}
           image={listItem.icon}
           description={listItem.descriptor}
           className={listItem.className}
@@ -56,7 +57,7 @@ function ItemList({ items }) {
   );
 }
 
-function Item({ image, description, className, path }) {
+function Item({ description, className, path }) {
   return (
     <div className="item">
       <Icon className={className} path={path} />
@@ -72,7 +73,7 @@ function Icon({ className, path }) {
       width="16"
       height="16"
       fill="currentColor"
-      class={className}
+      className={className}
       viewBox="0 0 16 16"
     >
       <path d={path} />
