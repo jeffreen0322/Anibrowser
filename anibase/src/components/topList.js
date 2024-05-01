@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
+import AnimeEntry from "./anime-entry/animeEntry";
 
-function TopPage() {
-  return <TopList />;
-}
-
-function TopList() {
+export default function TopList() {
   // Set a const for top animes using useState -> Empty array.
   const [topAnime, SetTopAnime] = useState([]);
 
@@ -26,29 +23,15 @@ function TopList() {
   console.log(topAnime);
 
   return (
-    <div>
-      <ul>
-        {topAnime.map((anime) => (
-          <AnimeEntry
-            key={anime.title}
-            title={anime.title}
-            episodes={anime.episodes}
-            image={anime.images.jpg.image_url}
-          />
-        ))}
-      </ul>
+    <div className="top">
+      {topAnime.map((anime) => (
+        <AnimeEntry
+          key={anime.title}
+          title={anime.title}
+          episodes={anime.episodes}
+          image={anime.images.jpg.image_url}
+        />
+      ))}
     </div>
   );
 }
-
-function AnimeEntry({ title, episodes, image }) {
-  return (
-    <li>
-      <p>{title}</p>
-      <img src={image} alt={title} />
-      <p>Episodes: {episodes}</p>
-    </li>
-  );
-}
-
-export default TopPage;

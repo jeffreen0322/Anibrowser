@@ -1,5 +1,6 @@
 import React from "react";
 import "./home.css";
+import SeasonalList from "../../components/seasonalList";
 
 const items = [
   {
@@ -21,7 +22,12 @@ const items = [
 ];
 
 export default function HomePage() {
-  return <About />;
+  return (
+    <div>
+      <About />
+      <SeasonalList />
+    </div>
+  );
 }
 
 function About() {
