@@ -5,5 +5,10 @@
   gap: 1rem;
   text-align: center;
   padding: 2rem;
-  background-color: rgb(8, 75, 75);
+
+  background-image: url("../../images/comet-sky.png");
+  background-repeat: no-repeat;
+  background-position: center center; /* Center the background image */
+  background-attachment: fixed;
+  background-size: cover;
 }
