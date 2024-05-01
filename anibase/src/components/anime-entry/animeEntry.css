@@ -1,3 +1,10 @@
+.ani-entry {
+  background-color: #12ac9c;
+  border: black solid 2px;
+  padding: 1rem;
+  width: 250px;
+}
+
 .ani-entry > img {
-  height: 300px;
+  height: 250px;
 }

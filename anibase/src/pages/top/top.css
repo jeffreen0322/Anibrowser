@@ -1,6 +1,9 @@
 .top {
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1rem;
   text-align: center;
+  padding: 2rem;
+  background-color: rgb(8, 75, 75);
 }
