@@ -28,6 +28,7 @@ export default function TopList() {
         <AnimeEntry
           key={anime.title}
           title={anime.title}
+          score={anime.score}
           episodes={anime.episodes}
           image={anime.images.jpg.image_url}
         />

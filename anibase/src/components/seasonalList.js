@@ -7,9 +7,9 @@ export default function SeasonalList() {
 
   // Async function to fetch from api.
   const GetSeasonalAnime = async () => {
-    const temp = await fetch(
-      "https://api.jikan.moe/v4/seasons/now?limit=10"
-    ).then((res) => res.json());
+    const temp = await fetch("https://api.jikan.moe/v4/seasons/now").then(
+      (res) => res.json()
+    );
 
     // Set the top animes.
     SetSeasonalAnime(temp.data);
@@ -26,6 +26,7 @@ export default function SeasonalList() {
         <AnimeEntry
           key={anime.title}
           title={anime.title}
+          score={anime.score}
           episodes={anime.episodes}
           image={anime.images.jpg.image_url}
         />

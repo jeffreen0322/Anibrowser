@@ -10,3 +10,13 @@
   height: 250px;
   border: black solid 2px;
 }
+
+.ani-entry > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ani-entry > ul > li {
+  list-style-type: none;
+}
