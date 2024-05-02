@@ -11,10 +11,6 @@ export default function AnimeEntry({ title, episodes, score, image }) {
         <li>Score: {score}</li>
         <li>Episodes: {episodes == null ? "N/A" : episodes}</li>
       </ul>
-      {/* <p>
-        <strong>{title}</strong>
-      </p>
-      <p>Episodes: {episodes == null ? "N/A" : episodes}</p> */}
     </div>
   );
 }
