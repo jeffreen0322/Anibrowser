@@ -6,7 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: #2753c3;
+  background-image: url("../../images/comet-sky.png");
+  background-repeat: no-repeat;
+  background-position: center center; /* Center the background image */
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 code {
@@ -20,6 +24,7 @@ code {
   align-items: center;
   padding-top: 10px;
   padding-bottom: 5px;
+  background-color: #2753c3;
 }
 
 .title-header {
@@ -53,10 +58,4 @@ code {
   gap: 1rem;
   text-align: center;
   padding: 2rem;
-
-  background-image: url("../../images/comet-sky.png");
-  background-repeat: no-repeat;
-  background-position: center center; /* Center the background image */
-  background-attachment: fixed;
-  background-size: cover;
 }

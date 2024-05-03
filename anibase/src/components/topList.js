@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AnimeEntry from "./anime-entry/animeEntry";
+import Category from "./named-header/category";
 
 export default function TopList() {
   // Set a const for top animes using useState -> Empty array.
@@ -23,16 +24,19 @@ export default function TopList() {
   console.log(topAnime);
 
   return (
-    <div className="top">
-      {topAnime.map((anime) => (
-        <AnimeEntry
-          key={anime.title}
-          title={anime.title}
-          score={anime.score}
-          episodes={anime.episodes}
-          image={anime.images.jpg.image_url}
-        />
-      ))}
+    <div>
+      <Category name="Top Animes" />
+      <div className="top">
+        {topAnime.map((anime) => (
+          <AnimeEntry
+            key={anime.title}
+            title={anime.title}
+            score={anime.score}
+            episodes={anime.episodes}
+            image={anime.images.jpg.image_url}
+          />
+        ))}
+      </div>
     </div>
   );
 }
