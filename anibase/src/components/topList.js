@@ -30,6 +30,7 @@ export default function TopList() {
         {topAnime.map((anime) => (
           <AnimeEntry
             key={anime.title}
+            id={anime.mal_id}
             title={anime.title}
             score={anime.score}
             episodes={anime.episodes}
