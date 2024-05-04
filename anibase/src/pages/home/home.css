@@ -56,6 +56,5 @@ code {
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 1.5rem;
-  text-align: center;
   padding: 2rem;
 }
