@@ -15,7 +15,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/top" element={<TopPage />} />
-          <Route path="/anime/:id" Component={AnimePage}></Route>
+          <Route path="/anime/:id" element={<AnimePage />}></Route>
         </Routes>
       </Router>
     </>
