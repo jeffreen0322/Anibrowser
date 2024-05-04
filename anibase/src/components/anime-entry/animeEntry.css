@@ -9,6 +9,7 @@ a {
   border: black solid 2px;
   padding: 1rem;
   width: 250px;
+  text-align: center;
 }
 
 .ani-entry:hover {
