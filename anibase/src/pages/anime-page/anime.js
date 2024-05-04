@@ -4,7 +4,7 @@ import AnimeEntry from "../../components/anime-entry/animeEntry";
 import Category from "../../components/named-header/category";
 import "./anime.css";
 
-export default function SeasonalList() {
+export default function AnimePage() {
   const idObj = useParams("id");
   const [anime, SetAnime] = useState([]);
 
