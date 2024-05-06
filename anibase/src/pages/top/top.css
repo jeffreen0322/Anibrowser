@@ -1,11 +1,3 @@
-body {
-  background-image: url("../../images/comet-sky.png");
-  background-repeat: no-repeat;
-  background-position: center center; /* Center the background image */
-  background-attachment: fixed;
-  background-size: cover;
-}
-
 .top {
   display: grid;
   grid-template-rows: auto;
