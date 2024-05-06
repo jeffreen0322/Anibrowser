@@ -16,9 +16,9 @@ export default function AnimePage() {
 
   // Async function to fetch from api.
   const GetAnime = async () => {
-    const temp = await fetch("https://api.jikan.moe/v4/anime/" + idObj.id).then(
-      (res) => res.json()
-    );
+    const temp = await fetch(
+      "https://api.jikan.moe/v4/anime/" + idObj.id + "/full"
+    ).then((res) => res.json());
 
     // Set the top animes.
     SetAnime(temp.data);
