@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Category from "../../components/named-header/category";
+import AnimeInfo from "../../components/anime-info/anime-info";
+import "./anime.css";
 
 export default function AnimePage() {
   const idObj = useParams("id");
@@ -27,42 +29,12 @@ export default function AnimePage() {
     GetAnime();
   });
 
-  console.log(anime.images.jpg.image_url);
+  console.log(anime);
 
   return (
-    <div className="container">
+    <div className="ani-container">
       <Category name={anime.title} />
       <AnimeInfo data={anime} />
     </div>
   );
 }
-
-// TODO: Make this exportable (It's own component).
-function AnimeInfo({ data }) {
-  return (
-    <div className="ani=info">
-      <img src={data.images.jpg.image_url} alt={data.title} />
-      <AnimeTextInfo data={data} />
-    </div>
-  );
-
-  function AnimeTextInfo({ data }) {
-    return (
-      <div>
-        <h3>Score: {data.score}</h3>
-        {data.episodes == null ? (
-          <h3>Episodes: N/A</h3>
-        ) : (
-          <h3>Episodes: {data.episodes}</h3>
-        )}
-      </div>
-    );
-  }
-}
-
-// key={anime.title}
-// id={anime.mal_id}
-// title={anime.title}
-// score={anime.score}
-// episodes={anime.episodes}
-// image={anime.images.jpg.image_url}
