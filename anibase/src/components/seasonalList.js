@@ -33,6 +33,7 @@ export default function SeasonalList() {
             score={anime.score}
             episodes={anime.episodes}
             image={anime.images.jpg.image_url}
+            season={null}
           />
         ))}
       </div>
