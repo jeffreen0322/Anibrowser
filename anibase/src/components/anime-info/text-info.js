@@ -36,6 +36,16 @@ export default function AnimeTextInfo({ data }) {
       <li>
         <strong>Year</strong>: {data.year}
       </li>
+      <li>
+        <strong>Studio</strong>:{" "}
+        {data.studios &&
+          data.studios.map((studio, index) => (
+            <span key={studio.mal_id}>
+              {studio.name}
+              {index !== data.studios.length - 1 && ", "}
+            </span>
+          ))}
+      </li>
     </ul>
   );
 }
