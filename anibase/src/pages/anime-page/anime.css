@@ -2,3 +2,8 @@
   background-color: #2753c3;
   opacity: 0.9;
 }
+
+.trailer {
+  display: flex;
+  justify-content: right;
+}
