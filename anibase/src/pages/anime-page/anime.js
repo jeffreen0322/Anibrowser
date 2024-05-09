@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Category from "../../components/named-header/category";
 import AnimeInfo from "../../components/anime-info/anime-info";
+import Trailer from "../../components/trailer/trailer";
 import "./anime.css";
 
 export default function AnimePage() {
@@ -35,7 +36,6 @@ export default function AnimePage() {
   return (
     <div className="ani-container">
       <AnimeGeneral anime={anime} />
-      <Trailer trailer={anime.trailer.embed_url} />
     </div>
   );
 }
@@ -43,22 +43,8 @@ export default function AnimePage() {
 function AnimeGeneral({ anime }) {
   return (
     <div>
-      <Category name={anime.title} />
+      <Category id="ani-title" name={anime.title} />
       <AnimeInfo data={anime} />
-    </div>
-  );
-}
-
-function Trailer({ trailer }) {
-  return (
-    <div className="trailer">
-      <iframe
-        className="video"
-        width="420"
-        height="315"
-        title="trailer"
-        src={trailer}
-      ></iframe>
     </div>
   );
 }

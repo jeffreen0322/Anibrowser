@@ -3,7 +3,6 @@
   opacity: 0.9;
 }
 
-.trailer {
-  display: flex;
-  justify-content: right;
+#ani-title {
+  align-self: left;
 }
