@@ -16,6 +16,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/top" element={<TopPage />} />
           <Route path="/anime/:id" element={<AnimePage />} />
+          <Route path="/anime/genre/:id" />
         </Routes>
       </Router>
     </>
