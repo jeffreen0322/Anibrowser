@@ -20,6 +20,8 @@ p {
   align-items: center;
   padding-top: 10px;
   padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
   background-color: #2753c3;
 }
 
@@ -53,4 +55,42 @@ p {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 1.5rem;
   padding: 2rem;
+  justify-items: center;
+}
+
+@media (min-width: 1127px) and (max-width: 1387px) {
+  .seasonal {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 880px) and (max-width: 1126px) {
+  .seasonal {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 879px) {
+  .item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .seasonal {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 296px) and (max-width: 599px) {
+  .item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .seasonal {
+    grid-template-columns: 1fr;
+  }
 }

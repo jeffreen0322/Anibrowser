@@ -42,7 +42,7 @@ function About() {
 function Title() {
   return (
     <header className="title-header">
-      <h1>Anibase: Anime listings done right</h1>
+      <h1>Anibase</h1>
     </header>
   );
 }

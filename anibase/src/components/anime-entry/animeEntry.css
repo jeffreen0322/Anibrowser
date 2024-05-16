@@ -28,3 +28,9 @@
 .ani-entry > ul > li {
   list-style-type: none;
 }
+
+@media (min-width: 296px) and (max-width: 879px) {
+  .ani-entry {
+    box-shadow: 0 0 20px 5px rgba(52, 152, 219, 0.7);
+  }
+}
