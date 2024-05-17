@@ -9,3 +9,13 @@
   border-radius: 5%;
   height: 250px;
 }
+
+@media (min-width: 375px) and (max-width: 1130px) {
+  .ani-info {
+    flex-direction: column;
+  }
+}
+/* 
+@media (max-width: 374px) {
+  .a;
+} */

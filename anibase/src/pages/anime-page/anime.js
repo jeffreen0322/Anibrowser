@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Category from "../../components/named-header/category";
 import AnimeInfo from "../../components/anime-info/anime-info";
-import Trailer from "../../components/trailer/trailer";
 import "./anime.css";
 
 export default function AnimePage() {
