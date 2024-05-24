@@ -35,7 +35,11 @@ export default function TopList() {
             score={anime.score}
             episodes={anime.episodes}
             image={anime.images.jpg.image_url}
-            season={anime.season + " " + anime.year}
+            season={
+              anime.season != null && anime.year != null
+                ? anime.season + " " + anime.year
+                : "N/A"
+            }
           />
         ))}
       </div>
