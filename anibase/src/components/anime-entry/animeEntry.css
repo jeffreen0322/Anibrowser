@@ -16,6 +16,8 @@
 
 .ani-entry > img {
   height: 250px;
+  width: 178px;
+  object-fit: cover;
   border: black solid 2px;
 }
 

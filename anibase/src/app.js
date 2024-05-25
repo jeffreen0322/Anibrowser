@@ -7,6 +7,7 @@ import Navbar from "./navbar";
 import TopPage from "./pages/top/top";
 import HomePage from "./pages/home/home";
 import AnimePage from "./pages/anime-page/anime";
+import AnimeSearch from "./pages/anime-search/anime-search";
 
 export default function App() {
   return (
@@ -17,7 +18,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/top" element={<TopPage />} />
           <Route path="/anime/:id" element={<AnimePage />} />
-          <Route path="/anime/genre/:id" />
+          <Route path="/anime-search/:id" element={<AnimeSearch />} />
         </Routes>
       </Router>
     </>
