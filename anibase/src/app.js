@@ -12,8 +12,8 @@ import AnimeSearch from "./pages/anime-search/anime-search";
 export default function App() {
   return (
     <>
-      <Navbar />
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/top" element={<TopPage />} />

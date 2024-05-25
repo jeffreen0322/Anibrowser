@@ -27,7 +27,7 @@ function AnimeSearchList() {
   // Used when fetching data.
   useEffect(() => {
     GetAnimeResults();
-  }, []);
+  }, [idObj]);
 
   console.log(animeResults);
 

@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Navbar() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    // Redirect to anime search page with the search query as the id
+    navigate(`/anime-search/${searchQuery}`);
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
@@ -32,12 +46,14 @@ function Navbar() {
               </a>
             </li>
           </ul>
-          <form className="d-flex">
+          <form className="d-flex" onSubmit={handleFormSubmit}>
             <input
               className="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
+              value={searchQuery}
+              onChange={handleInputChange}
             />
             <button className="btn btn-outline-success" type="submit">
               Search
