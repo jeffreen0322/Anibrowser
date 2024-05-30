@@ -19,9 +19,7 @@ function AnimeSearchList() {
       "https://api.jikan.moe/v4/anime?q=" + idObj.id
     ).then((res) => res.json());
 
-    if (!animeResults.includes(temp.data)) {
-      SetAnimeResults(temp.data);
-    }
+    SetAnimeResults(temp.data);
   };
 
   // Used when fetching data.
@@ -29,13 +27,31 @@ function AnimeSearchList() {
     GetAnimeResults();
   }, [idObj]);
 
-  console.log(animeResults);
+  const animeSet = [];
+  var duplicate = false;
+
+  // Go through every anime.
+  for (let i = 0; i < animeResults.length; ++i) {
+    // Starting from the beginning of array, check if each of anime has the same mal_id as the current.
+    for (let j = 0; j < i; ++j) {
+      if (animeResults[i].mal_id === animeResults[j].mal_id) {
+        duplicate = true;
+        break;
+      }
+    }
+
+    if (!duplicate) {
+      animeSet.push(animeResults[i]);
+    }
+
+    duplicate = false;
+  }
 
   return (
     <div>
       <Category name="Search Results" />
       <div className="results">
-        {animeResults.map((anime) => (
+        {animeSet.map((anime) => (
           <AnimeEntry
             key={anime.title}
             id={anime.mal_id}
