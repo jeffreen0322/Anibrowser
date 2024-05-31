@@ -52,7 +52,7 @@ function Navbar() {
               type="search"
               placeholder="Search"
               aria-label="Search"
-              value={searchQuery}
+              value={searchQuery.replace(/\//g, "-")}
               onChange={handleInputChange}
             />
             <button className="btn btn-outline-success" type="submit">
