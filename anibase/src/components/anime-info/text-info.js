@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./text-info.css";
 
 export default function AnimeTextInfo({ data }) {
@@ -27,7 +28,7 @@ export default function AnimeTextInfo({ data }) {
         {data.genres &&
           data.genres.map((genre, index) => (
             <span key={genre.mal_id}>
-              {genre.name}
+              <Link to={`/genre/0`}>{genre.name}</Link>
               {index !== data.genres.length - 1 && ", "}
             </span>
           ))}
