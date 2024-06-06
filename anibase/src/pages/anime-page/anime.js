@@ -30,8 +30,6 @@ export default function AnimePage() {
     GetAnime();
   });
 
-  console.log(anime);
-
   return (
     <div className="ani-container">
       <AnimeGeneral anime={anime} />

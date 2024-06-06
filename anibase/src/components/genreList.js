@@ -7,6 +7,7 @@ export default function GenreList() {
   // Set a const for top animes using useState -> Empty array.
   const [genres, SetGenres] = useState([]);
   const idObj = useParams("id");
+  const idObj2 = useParams("name");
 
   // Async function to fetch from api.
   const GetGenres = async () => {
@@ -27,7 +28,7 @@ export default function GenreList() {
 
   return (
     <div>
-      <Category name="Genre" />
+      <Category name={idObj2.name} />
       <div className="genre">
         {genres.map((anime) => (
           <AnimeEntry
