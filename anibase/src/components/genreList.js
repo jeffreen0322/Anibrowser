@@ -30,21 +30,22 @@ export default function GenreList() {
     <div>
       <Category name={idObj2.name} />
       <div className="genre">
-        {genres.map((anime) => (
-          <AnimeEntry
-            key={anime.title}
-            id={anime.mal_id}
-            title={anime.title}
-            score={anime.score}
-            episodes={anime.episodes}
-            image={anime.images.jpg.image_url}
-            season={
-              anime.season != null && anime.year != null
-                ? anime.season + " " + anime.year
-                : "N/A"
-            }
-          />
-        ))}
+        {genres &&
+          genres.map((anime) => (
+            <AnimeEntry
+              key={anime.title}
+              id={anime.mal_id}
+              title={anime.title}
+              score={anime.score}
+              episodes={anime.episodes}
+              image={anime.images.jpg.image_url}
+              season={
+                anime.season != null && anime.year != null
+                  ? anime.season + " " + anime.year
+                  : "N/A"
+              }
+            />
+          ))}
       </div>
     </div>
   );
