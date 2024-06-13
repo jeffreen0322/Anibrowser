@@ -17,8 +17,9 @@ export default function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/top/:id" element={<TopPage />} />
+          <Route path="/top/:page" element={<TopPage />} />
           <Route path="/anime/:id" element={<AnimePage />} />
+
           <Route path="/genre/:id/:name" element={<GenrePage />} />
           <Route path="/anime-search/:id" element={<AnimeSearch />} />
         </Routes>

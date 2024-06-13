@@ -5,12 +5,11 @@ import { useParams } from "react-router-dom";
 import "./top.css";
 
 export default function TopPage() {
-  const objId = useParams("id");
-  console.log("id: " + objId.id);
+  const objId = useParams("page");
   return (
     <div>
       <TopList />
-      <Pagination page={objId.id} />
+      <Pagination page={objId.page} />
     </div>
   );
 }
