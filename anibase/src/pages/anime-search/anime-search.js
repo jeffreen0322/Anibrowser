@@ -1,22 +1,36 @@
 import React, { useEffect, useState } from "react";
 import AnimeEntry from "../../components/anime-entry/animeEntry";
 import Category from "../../components/named-header/category";
+import Pagination from "../../components/pagination/pagination";
 import { useParams } from "react-router-dom";
 import "./anime-search.css";
 
 export default function AnimeSearch() {
-  return <AnimeSearchList />;
+  const idObj = useParams("id");
+  const idObj2 = useParams("page");
+  const directory = "/anime-search/" + idObj.id + "/";
+  return (
+    <div>
+      <AnimeSearchList />
+      <Pagination directory={directory} page={idObj2.page} />
+    </div>
+  );
 }
 
 function AnimeSearchList() {
   // Set a const for top animes using useState -> Empty array.
   const [animeResults, SetAnimeResults] = useState([]);
   const idObj = useParams("id");
+  const idObj2 = useParams("page");
 
   // Async function to fetch from api.
   const GetAnimeResults = async () => {
     const temp = await fetch(
-      "https://api.jikan.moe/v4/anime?q=" + idObj.id
+      "https://api.jikan.moe/v4/anime?q=" +
+        idObj.id +
+        "&" +
+        "page=" +
+        idObj2.page
     ).then((res) => res.json());
 
     SetAnimeResults(temp.data);

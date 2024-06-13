@@ -9,7 +9,7 @@ export default function TopPage() {
   return (
     <div>
       <TopList />
-      <Pagination page={objId.page} />
+      <Pagination directory="/top/" page={objId.page} />
     </div>
   );
 }
