@@ -1,0 +1,7 @@
+#prev {
+  padding: 10px 20px;
+}
+
+#prev:hover {
+  box-shadow: 0 0 20px 5px rgba(52, 152, 219, 0.7);
+}

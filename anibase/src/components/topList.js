@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import AnimeEntry from "./anime-entry/animeEntry";
 import Category from "./named-header/category";
+import { useParams } from "react-router-dom";
 
 export default function TopList() {
   // Set a const for top animes using useState -> Empty array.
   const [topAnime, SetTopAnime] = useState([]);
+  const idObj = useParams("id");
 
   // Async function to fetch from api.
   const GetTopAnime = async () => {
     const temp = await fetch(
-      "https://api.jikan.moe/v4/top/anime?limit=10"
+      "https://api.jikan.moe/v4/top/anime?page=" + idObj.id
     ).then((res) => res.json());
 
     // Set the top animes.
