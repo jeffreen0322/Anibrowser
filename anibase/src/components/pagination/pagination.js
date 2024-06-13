@@ -6,8 +6,8 @@ import "./pagination.css";
 export default function Pagination({ page }) {
   return (
     <span className="pagination">
-      <NextButton page={page} />
       <PreviousButton page={page} />
+      <NextButton page={page} />
     </span>
   );
 }
