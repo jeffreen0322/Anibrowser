@@ -9,17 +9,24 @@ export default function AnimeSearch() {
   const idObj = useParams("id");
   const idObj2 = useParams("page");
   const directory = "/anime-search/" + idObj.id + "/";
+  const searchResults = GetResults();
   return (
     <div>
-      <AnimeSearchList />
-      <Pagination directory={directory} page={idObj2.page} />
+      <AnimeSearchList animeResults={searchResults[0]} />
+      <Pagination
+        directory={directory}
+        page={idObj2.page}
+        count={searchResults[1]}
+      />
     </div>
   );
 }
 
-function AnimeSearchList() {
+function GetResults() {
   // Set a const for top animes using useState -> Empty array.
   const [animeResults, SetAnimeResults] = useState([]);
+  const [paginationResults, SetPaginationResults] = useState([]);
+
   const idObj = useParams("id");
   const idObj2 = useParams("page");
 
@@ -34,6 +41,7 @@ function AnimeSearchList() {
     ).then((res) => res.json());
 
     SetAnimeResults(temp.data);
+    SetPaginationResults(temp.pagination);
   };
 
   // Used when fetching data.
@@ -41,6 +49,10 @@ function AnimeSearchList() {
     GetAnimeResults();
   }, [idObj]);
 
+  return [animeResults, paginationResults];
+}
+
+function AnimeSearchList({ animeResults }) {
   const animeSet = [];
   var duplicate = false;
 

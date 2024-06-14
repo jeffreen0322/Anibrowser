@@ -23,8 +23,6 @@ export default function TopList() {
     GetTopAnime();
   }, []);
 
-  console.log(topAnime);
-
   return (
     <div>
       <Category name="Top Animes" />
