@@ -20,15 +20,12 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <a href="/">
+        <a className="navbar-brand" href="/">
           <img
             src="https://i.imgur.com/6hDgVdy.png"
             alt="logo of anibase"
             id="logo"
-          />
-        </a>
-        <a className="navbar-brand" href="/">
-          Anibase
+          />{" "}
         </a>
         <button
           className="navbar-toggler"
