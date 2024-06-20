@@ -8,11 +8,15 @@ export default function GenreList() {
   const [genres, SetGenres] = useState([]);
   const idObj = useParams("id");
   const idObj2 = useParams("name");
+  const idObj3 = useParams("page");
 
   // Async function to fetch from api.
   const GetGenres = async () => {
     const temp = await fetch(
-      "https://api.jikan.moe/v4/anime?genres=" + idObj.id
+      "https://api.jikan.moe/v4/anime?genres=" +
+        idObj.id +
+        "&page=" +
+        idObj3.page
     ).then((res) => res.json());
 
     // Set the top animes.
@@ -23,8 +27,6 @@ export default function GenreList() {
   useEffect(() => {
     GetGenres();
   }, [idObj]);
-
-  console.log(genres);
 
   return (
     <div>

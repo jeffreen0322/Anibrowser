@@ -23,7 +23,6 @@ export default function AnimeSearch() {
 }
 
 function GetResults() {
-  // Set a const for top animes using useState -> Empty array.
   const [animeResults, SetAnimeResults] = useState([]);
   const [paginationResults, SetPaginationResults] = useState([]);
 
