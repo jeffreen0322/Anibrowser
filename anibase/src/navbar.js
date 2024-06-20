@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./navbar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Navbar() {
@@ -19,6 +20,13 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
+        <a href="/">
+          <img
+            src="https://i.imgur.com/6hDgVdy.png"
+            alt="logo of anibase"
+            id="logo"
+          />
+        </a>
         <a className="navbar-brand" href="/">
           Anibase
         </a>
