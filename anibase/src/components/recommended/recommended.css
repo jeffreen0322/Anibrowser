@@ -1,0 +1,36 @@
+.recommendation {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+@media (min-width: 1127px) and (max-width: 1387px) {
+  .recommendation {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 880px) and (max-width: 1126px) {
+  .recommendation {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 879px) {
+  .recommendation {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 296px) and (max-width: 599px) {
+  .recommendation {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
