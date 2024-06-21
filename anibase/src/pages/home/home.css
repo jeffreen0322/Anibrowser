@@ -1,5 +1,5 @@
 body {
-  background-image: url("../../images/comet-sky.png");
+  background-image: url("../../images/night-sky.png");
   background-repeat: no-repeat;
   background-position: center center; /* Center the background image */
   background-attachment: fixed;
@@ -22,7 +22,7 @@ p {
   padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
-  background-color: #2753c3;
+  background-color: #091941;
 }
 
 .title-header {
