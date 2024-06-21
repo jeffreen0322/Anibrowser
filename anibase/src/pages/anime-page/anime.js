@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Category from "../../components/named-header/category";
-import AnimeInfo from "../../components/anime-info/anime-info";
+import AnimeGeneral from "../../components/anime-info/anime-general";
 import "./anime.css";
 
 export default function AnimePage() {
@@ -33,15 +32,6 @@ export default function AnimePage() {
   return (
     <div className="ani-container">
       <AnimeGeneral anime={anime} />
-    </div>
-  );
-}
-
-function AnimeGeneral({ anime }) {
-  return (
-    <div>
-      <Category id="ani-title" name={anime.title} />
-      <AnimeInfo data={anime} />
     </div>
   );
 }
