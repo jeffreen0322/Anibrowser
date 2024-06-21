@@ -40,6 +40,7 @@ export default function TopList() {
                 ? anime.season + " " + anime.year
                 : "N/A"
             }
+            showEpisode={true}
           />
         ))}
       </div>

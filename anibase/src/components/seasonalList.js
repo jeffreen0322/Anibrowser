@@ -34,6 +34,7 @@ export default function SeasonalList() {
             episodes={anime.episodes}
             image={anime.images.jpg.image_url}
             season={null}
+            showEpisode={true}
           />
         ))}
       </div>

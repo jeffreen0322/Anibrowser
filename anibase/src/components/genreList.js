@@ -46,6 +46,7 @@ export default function GenreList() {
                   ? anime.season + " " + anime.year
                   : "N/A"
               }
+              showEpisode={true}
             />
           ))}
       </div>
