@@ -42,7 +42,7 @@ function About() {
 function Title() {
   return (
     <header className="title-header">
-      <h1>Anibase</h1>
+      <h1>Anibrowser</h1>
     </header>
   );
 }
