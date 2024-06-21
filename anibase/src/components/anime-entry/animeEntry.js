@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./animeEntry.css";
 
 export default function AnimeEntry({
@@ -9,16 +10,24 @@ export default function AnimeEntry({
   score,
   image,
   season,
+  showEpisode,
 }) {
+  const navigate = useNavigate();
+  const handleRedirect = (path) => {
+    navigate(path);
+    window.location.reload();
+  };
   return (
-    <Link to={`/anime/${id}`} className="ani-entry">
+    <Link to={`/anime/${id}`} className="ani-entry" onClick={handleRedirect}>
       <img src={image} alt={title} />
       <ul>
         <li>
           <strong>{title}</strong>
         </li>
-        <li>Score: {score}</li>
-        <li>Episodes: {episodes == null ? "N/A" : episodes}</li>
+        {score !== null ? <li>Score: {score}</li> : null}
+        {showEpisode ? (
+          <li>Episodes: {episodes == null ? "N/A" : episodes}</li>
+        ) : null}
         <li style={{ color: "wheat" }}>
           <strong>{season != null ? season.toUpperCase() : null}</strong>
         </li>
