@@ -49,7 +49,8 @@ p {
   color: aliceblue;
 }
 
-.seasonal {
+.seasonal,
+.upcoming {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -59,14 +60,16 @@ p {
 }
 
 @media (min-width: 1127px) and (max-width: 1387px) {
-  .seasonal {
+  .seasonal,
+  .upcoming {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 1rem;
   }
 }
 
 @media (min-width: 880px) and (max-width: 1126px) {
-  .seasonal {
+  .seasonal,
+  .upcoming {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
@@ -78,7 +81,8 @@ p {
     gap: 1rem;
   }
 
-  .seasonal {
+  .seasonal,
+  .upcoming {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -90,7 +94,8 @@ p {
     gap: 1rem;
   }
 
-  .seasonal {
+  .seasonal,
+  .upcoming {
     grid-template-columns: 1fr;
   }
 }
