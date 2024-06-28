@@ -1,0 +1,10 @@
+.character {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.character > img {
+  height: 125px;
+  width: 89px;
+}
