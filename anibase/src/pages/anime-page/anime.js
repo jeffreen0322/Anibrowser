@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AnimeGeneral from "../../components/anime-info/anime-general";
 import RecommendedAnime from "../../components/recommended/recommended";
-import CharacterList from "../../components/characters/character-list";
 import "./anime.css";
 
 export default function AnimePage() {
@@ -34,7 +33,6 @@ export default function AnimePage() {
   return (
     <div className="ani-container">
       <AnimeGeneral anime={anime} />
-      <CharacterList id={idObj.id} />
       <RecommendedAnime id={idObj.id} />
     </div>
   );

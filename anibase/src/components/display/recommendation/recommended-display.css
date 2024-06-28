@@ -1,0 +1,11 @@
+#recommendation-extend {
+  margin-left: 1rem;
+  justify-content: center;
+  align-self: center;
+  justify-items: center;
+  padding: 10px 20px;
+}
+
+#recommendation-extend:hover {
+  box-shadow: 0 0 20px 5px rgba(52, 152, 219, 0.7);
+}
