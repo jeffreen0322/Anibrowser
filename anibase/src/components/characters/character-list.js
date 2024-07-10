@@ -3,7 +3,7 @@ import Character from "./character";
 import "./character-list.css";
 
 export default function CharacterList({ id }) {
-  const [characters, SetCharacters] = useState();
+  const [characters, SetCharacters] = useState([]);
 
   // Async function to fetch from api.
   const GetCharacters = async () => {

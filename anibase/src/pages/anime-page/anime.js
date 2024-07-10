@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import AnimeGeneral from "../../components/anime-info/anime-general";
 import RecommendedAnime from "../../components/recommended/recommended";
 import "./anime.css";
+import CharacterDisplayButton from "../../components/display/character/character-display";
 
 export default function AnimePage() {
   const idObj = useParams("id");
@@ -33,6 +34,7 @@ export default function AnimePage() {
   return (
     <div className="ani-container">
       <AnimeGeneral anime={anime} />
+      <CharacterDisplayButton id={idObj.id} />
       <RecommendedAnime id={idObj.id} />
     </div>
   );
