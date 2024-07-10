@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CharacterList from "../../characters/character-list";
 import "./character-display.css";
 
-export default function CharacterDisplayButton({ id }) {
+export default function CharacterDisplayButton({ list }) {
   const [display, SetDisplay] = useState(false);
 
   // Get the previous display and changes it.
@@ -19,7 +19,7 @@ export default function CharacterDisplayButton({ id }) {
       <button id="char-display" onClick={ToggleDisplay}>
         Hide Characters
       </button>
-      <CharacterList id={id} />
+      <CharacterList characters={list} />
     </div>
   );
 }

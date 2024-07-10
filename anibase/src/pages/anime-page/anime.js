@@ -16,6 +16,8 @@ export default function AnimePage() {
     trailer: { embed_url: "" },
   });
 
+  const [characters, SetCharacters] = useState([]);
+
   // Async function to fetch from api.
   const GetAnime = async () => {
     const temp = await fetch(
@@ -26,15 +28,26 @@ export default function AnimePage() {
     SetAnime(temp.data);
   };
 
+  // Async function to fetch from api.
+  const GetCharacters = async () => {
+    const temp = await fetch(
+      "https://api.jikan.moe/v4/anime/" + idObj.id + "/characters"
+    ).then((res) => res.json());
+
+    // Set the top animes.
+    SetCharacters(temp.data);
+  };
+
   // Used when fetching data.
   useEffect(() => {
     GetAnime();
+    GetCharacters();
   });
 
   return (
     <div className="ani-container">
       <AnimeGeneral anime={anime} />
-      <CharacterDisplayButton id={idObj.id} />
+      <CharacterDisplayButton list={characters} />
       <RecommendedAnime id={idObj.id} />
     </div>
   );
