@@ -42,7 +42,7 @@ export default function AnimePage() {
   useEffect(() => {
     GetAnime();
     GetCharacters();
-  });
+  }, []);
 
   return (
     <div className="ani-container">
