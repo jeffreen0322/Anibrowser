@@ -34,7 +34,7 @@ export default function AnimePage() {
       "https://api.jikan.moe/v4/anime/" + idObj.id + "/characters"
     ).then((res) => res.json());
 
-    // Set the top animes.
+    // Set the characters..
     SetCharacters(temp.data);
   };
 
@@ -42,7 +42,7 @@ export default function AnimePage() {
   useEffect(() => {
     GetAnime();
     GetCharacters();
-  }, []);
+  });
 
   return (
     <div className="ani-container">
