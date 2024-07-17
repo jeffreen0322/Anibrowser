@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import genres from "./data/genres";
 import "./navbar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -52,6 +53,18 @@ function Navbar() {
             </li>
           </ul>
           <form className="d-flex" onSubmit={handleFormSubmit}>
+            <select name="genres" id="genres">
+              <option value="select" selected>
+                Select Genre
+              </option>
+              {genres &&
+                genres.map((genre) => (
+                  <option value={genre.name}>{genre.name}</option>
+                ))}
+            </select>
+            <button className="btn btn-outline-primary" type="submit">
+              Search
+            </button>
             <input
               className="form-control me-2"
               type="search"
