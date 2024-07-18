@@ -9,6 +9,7 @@ import HomePage from "./pages/home/home";
 import AnimePage from "./pages/anime-page/anime";
 import GenrePage from "./pages/genre-page/genre";
 import AnimeSearch from "./pages/anime-search/anime-search";
+import GenreSearch from "./pages/anime-search/genre-search";
 
 export default function App() {
   return (
@@ -21,10 +22,7 @@ export default function App() {
           <Route path="/anime/:id" element={<AnimePage />} />
           <Route path="/genre/:id/:name/:page" element={<GenrePage />} />
           <Route path="/anime-search/:id/:page/" element={<AnimeSearch />} />
-          {/* <Route
-            path="/anime-search/:id/:genre/:page/"
-            element={<AnimeSearch />}
-          /> */}
+          <Route path="/genre-search/:genre/:page/" element={<GenreSearch />} />
         </Routes>
       </Router>
     </>
