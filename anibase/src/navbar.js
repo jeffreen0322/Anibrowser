@@ -1,20 +1,34 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import genres from "./data/genres";
 import "./navbar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [filterOption, setFilterOption] = useState("");
   const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
+  const handleGenreChange = (event) => {
+    setFilterOption(event.target.value);
+  };
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     // Redirect to anime search page with the search query as the id
     navigate(`/anime-search/${searchQuery}/1`);
+  };
+
+  const handleGenreSubmit = (event) => {
+    // Must be a valid selection before we proceed.
+    if (filterOption !== "" && filterOption !== "0") {
+      event.preventDefault();
+      navigate(`/genre-search/${filterOption}/1`);
+    }
   };
 
   return (
@@ -51,6 +65,25 @@ function Navbar() {
               </a>
             </li>
           </ul>
+          <form className="d-flex" onSubmit={handleGenreSubmit}>
+            <select
+              className="genre-selector"
+              name="genres"
+              id="genres"
+              onChange={handleGenreChange}
+            >
+              <option value="0">Select Genre</option>
+              {genres &&
+                genres.map((genre) => (
+                  <option key={genre.mal_id} value={genre.mal_id}>
+                    {genre.name}
+                  </option>
+                ))}
+            </select>
+            <button className="btn btn-outline-primary" type="submit">
+              Search
+            </button>
+          </form>
           <form className="d-flex" onSubmit={handleFormSubmit}>
             <input
               className="form-control me-2"
