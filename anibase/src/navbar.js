@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import genres from "./data/genres";
+import genreObj from "./data/genres";
 import "./navbar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -73,9 +73,9 @@ function Navbar() {
               onChange={handleGenreChange}
             >
               <option value="0">Select Genre</option>
-              {genres &&
-                genres.map((genre) => (
-                  <option key={genre.mal_id} value={genre.mal_id}>
+              {genreObj[0] &&
+                genreObj[0].map((genre) => (
+                  <option key={genre.mal_id} value={genre.name}>
                     {genre.name}
                   </option>
                 ))}

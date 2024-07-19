@@ -4,6 +4,7 @@ import Category from "../../components/named-header/category";
 import Pagination from "../../components/pagination/pagination";
 import getUniqueEntries from "../../helpers/getUniqueEntries";
 import { useParams } from "react-router-dom";
+import genreObj from "../../data/genres";
 import "./anime-search.css";
 
 export default function GenreSearch() {
@@ -34,7 +35,7 @@ function GetResults() {
   const GetAnimeResults = async () => {
     const temp = await fetch(
       "https://api.jikan.moe/v4/anime?genres=" +
-        idObj.genre +
+        genreObj[1].get(idObj.genre) +
         "&" +
         "page=" +
         idObj2.page
@@ -54,10 +55,11 @@ function GetResults() {
 
 function AnimeSearchList({ animeResults }) {
   const searchResults = getUniqueEntries(animeResults);
+  const idObj = useParams("genre");
 
   return (
     <div>
-      <Category name="Search Results" />
+      <Category name={idObj.genre} />
       <div className="results">
         {searchResults.map((anime) => (
           <AnimeEntry
