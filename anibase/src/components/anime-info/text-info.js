@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import genres from "../../data/genres";
 import "./text-info.css";
 
 export default function AnimeTextInfo({ data }) {
@@ -29,13 +28,7 @@ export default function AnimeTextInfo({ data }) {
         {data.genres &&
           data.genres.map((genre, index) => (
             <span key={genre.mal_id}>
-              <Link
-                to={
-                  `/genre/` + getGenreId(genre.name) + "/" + genre.name + "/1"
-                }
-              >
-                {genre.name}
-              </Link>
+              <Link to={`/genre-search/${genre.name}/1`}>{genre.name}</Link>
               {index !== data.genres.length - 1 && ", "}
             </span>
           ))}
@@ -56,15 +49,4 @@ export default function AnimeTextInfo({ data }) {
       </li>
     </ul>
   );
-}
-
-function getGenreId(genreElement) {
-  let id = "";
-  genres.forEach((genre) => {
-    if (genre.name === genreElement) {
-      id = genre.mal_id.toString();
-    }
-  });
-
-  return id;
 }
