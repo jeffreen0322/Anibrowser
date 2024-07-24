@@ -7,7 +7,6 @@ import Navbar from "./navbar";
 import TopPage from "./pages/top/top";
 import HomePage from "./pages/home/home";
 import AnimePage from "./pages/anime-page/anime";
-import GenrePage from "./pages/genre-page/genre";
 import AnimeSearch from "./pages/anime-search/anime-search";
 import GenreSearch from "./pages/anime-search/genre-search";
 
@@ -20,7 +19,6 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/top/:page" element={<TopPage />} />
           <Route path="/anime/:id" element={<AnimePage />} />
-          <Route path="/genre/:id/:name/:page" element={<GenrePage />} />
           <Route path="/anime-search/:id/:page/" element={<AnimeSearch />} />
           <Route path="/genre-search/:genre/:page/" element={<GenreSearch />} />
         </Routes>
