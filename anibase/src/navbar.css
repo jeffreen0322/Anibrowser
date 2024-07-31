@@ -9,4 +9,9 @@
 .genre-selector {
   border-radius: 4%;
   margin-right: 8px;
+  width: 200px;
+}
+
+.form-control {
+  width: 200px;
 }
