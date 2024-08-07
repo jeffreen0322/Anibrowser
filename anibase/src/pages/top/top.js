@@ -6,12 +6,16 @@ import { useState, useEffect } from "react";
 import "./top.css";
 
 export default function TopPage() {
+  const typeObj = useParams("type");
   const objId = useParams("page");
   const searchResults = GetResults(objId.page);
+
+  const api = typeObj.type === "anime" ? "/anime/top/" : "/manga/top/";
+
   return (
     <div>
       <TopList />
-      <Pagination directory="/top/" page={objId.page} count={searchResults} />
+      <Pagination directory={api} page={objId.page} count={searchResults} />
     </div>
   );
 }
