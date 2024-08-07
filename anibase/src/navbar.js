@@ -60,8 +60,13 @@ function Navbar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" href="/top/1">
+              <a className="nav-link active" href="/anime/top/1">
                 Top Anime
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link active" href="/manga/top/1">
+                Top Manga
               </a>
             </li>
           </ul>
