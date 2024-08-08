@@ -21,7 +21,11 @@ export default function AnimeEntry({
   const typeObj = useParams("type");
 
   return (
-    <Link to={`/anime/${id}`} className="ani-entry" onClick={handleRedirect}>
+    <Link
+      to={`/${typeObj.type}/${id}`}
+      className="ani-entry"
+      onClick={handleRedirect}
+    >
       <img src={image} alt={title} />
       <ul>
         <li>
