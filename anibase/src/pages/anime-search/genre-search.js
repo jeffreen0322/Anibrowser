@@ -30,11 +30,12 @@ function GetResults() {
 
   const idObj = useParams("genre");
   const idObj2 = useParams("page");
+  const typeObj = useParams("type");
 
   // Async function to fetch from api.
   const GetAnimeResults = async () => {
     const temp = await fetch(
-      "https://api.jikan.moe/v4/anime?genres=" +
+      `https://api.jikan.moe/v4/${typeObj.type}?genres=` +
         genreObj[1].get(idObj.genre) +
         "&" +
         "page=" +
