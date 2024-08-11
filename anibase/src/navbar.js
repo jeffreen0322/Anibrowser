@@ -27,7 +27,7 @@ function Navbar() {
     // Must be a valid selection before we proceed.
     if (filterOption !== "" && filterOption !== "0") {
       event.preventDefault();
-      navigate(`/genre-search/${filterOption}/1`);
+      navigate(`/anime/genre-search/${filterOption}/1`);
     }
   };
 
