@@ -22,7 +22,7 @@ export default function AnimeEntry({
 
   return (
     <Link
-      to={`/${typeObj.type}/${id}`}
+      to={`/${typeObj.type === undefined ? "anime" : typeObj.type}/${id}`}
       className="ani-entry"
       onClick={handleRedirect}
     >
