@@ -63,17 +63,20 @@ function AnimeSearchList({ animeResults }) {
     navigate(
       `/${typeObj.type === "anime" ? "manga" : "anime"}/search/${idObj.id}/1`
     );
+
+    window.location.reload();
   };
 
   return (
     <div>
-      <Category name="Search Results" />
+      <Category
+        name={`${idObj.id} (${
+          typeObj.type.charAt(0).toUpperCase() + typeObj.type.slice(1)
+        })`}
+      />
       <div className="type-filter">
         <button className="filter-btn" onClick={handleRedirect}>
-          Anime
-        </button>
-        <button className="filter-btn" onClick={handleRedirect}>
-          Manga
+          {typeObj.type === "anime" ? "Manga" : "Anime"}
         </button>
       </div>
       <div className="results">
