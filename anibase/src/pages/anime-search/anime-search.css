@@ -1,3 +1,15 @@
+.type-filter {
+  text-align: center;
+}
+
+.filter-btn {
+  padding: 10px 20px;
+}
+
+.filter-btn:hover {
+  box-shadow: 0 0 20px 5px #3498dbb3;
+}
+
 .results {
   display: grid;
   grid-template-rows: auto;

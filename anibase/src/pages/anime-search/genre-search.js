@@ -3,7 +3,7 @@ import AnimeEntry from "../../components/anime-entry/animeEntry";
 import Category from "../../components/named-header/category";
 import Pagination from "../../components/pagination/pagination";
 import getUniqueEntries from "../../helpers/getUniqueEntries";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import genreObj from "../../data/genres";
 import "./anime-search.css";
 
@@ -55,12 +55,29 @@ function GetResults() {
 }
 
 function AnimeSearchList({ animeResults }) {
+  const navigate = useNavigate();
   const searchResults = getUniqueEntries(animeResults);
   const idObj = useParams("genre");
+  const typeObj = useParams("type");
+  const handleRedirect = () => {
+    navigate(
+      `/${typeObj.type === "anime" ? "manga" : "anime"}/genre-search/${
+        idObj.genre
+      }/1`
+    );
+  };
 
   return (
     <div>
       <Category name={idObj.genre} />
+      <div className="type-filter">
+        <button className="filter-btn" onClick={handleRedirect}>
+          Anime
+        </button>
+        <button className="filter-btn" onClick={handleRedirect}>
+          Manga
+        </button>
+      </div>
       <div className="results">
         {searchResults.map((anime) => (
           <AnimeEntry
