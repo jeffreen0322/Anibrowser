@@ -20,7 +20,7 @@ function Navbar() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     // Redirect to anime search page with the search query as the id
-    navigate(`/anime-search/${searchQuery}/1`);
+    navigate(`/anime/search/${searchQuery}/1`);
   };
 
   const handleGenreSubmit = (event) => {
