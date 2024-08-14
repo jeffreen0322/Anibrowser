@@ -19,7 +19,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/:type/top/:page" element={<TopPage />} />
           <Route path="/:type/:id" element={<AnimePage />} />
-          <Route path="/anime-search/:id/:page/" element={<AnimeSearch />} />
+          <Route path="/:type/search/:id/:page/" element={<AnimeSearch />} />
           <Route
             path="/:type/genre-search/:genre/:page/"
             element={<GenreSearch />}
