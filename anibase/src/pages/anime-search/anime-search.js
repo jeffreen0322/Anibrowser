@@ -3,13 +3,14 @@ import AnimeEntry from "../../components/anime-entry/animeEntry";
 import Category from "../../components/named-header/category";
 import Pagination from "../../components/pagination/pagination";
 import getUniqueEntries from "../../helpers/getUniqueEntries";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./anime-search.css";
 
 export default function AnimeSearch() {
   const idObj = useParams("id");
   const idObj2 = useParams("page");
-  const directory = "/anime-search/" + idObj.id + "/";
+  const typeObj = useParams("type");
+  const directory = `${typeObj.type}/search/${idObj.id}/`;
   const searchResults = GetResults();
   return (
     <div>
@@ -29,11 +30,12 @@ function GetResults() {
 
   const idObj = useParams("id");
   const idObj2 = useParams("page");
+  const typeObj = useParams("type");
 
   // Async function to fetch from api.
   const GetAnimeResults = async () => {
     const temp = await fetch(
-      "https://api.jikan.moe/v4/anime?q=" +
+      `https://api.jikan.moe/v4/${typeObj.type}?q=` +
         idObj.id +
         "&" +
         "page=" +
@@ -53,11 +55,30 @@ function GetResults() {
 }
 
 function AnimeSearchList({ animeResults }) {
+  const navigate = useNavigate();
   const searchResults = getUniqueEntries(animeResults);
+  const idObj = useParams("id");
+  const typeObj = useParams("type");
+  const handleRedirect = () => {
+    navigate(
+      `/${typeObj.type === "anime" ? "manga" : "anime"}/search/${idObj.id}/1`
+    );
+
+    window.location.reload();
+  };
 
   return (
     <div>
-      <Category name="Search Results" />
+      <Category
+        name={`${idObj.id} (${
+          typeObj.type.charAt(0).toUpperCase() + typeObj.type.slice(1)
+        })`}
+      />
+      <div className="type-filter">
+        <button className="filter-btn" onClick={handleRedirect}>
+          {typeObj.type === "anime" ? "Manga" : "Anime"}
+        </button>
+      </div>
       <div className="results">
         {searchResults.map((anime) => (
           <AnimeEntry

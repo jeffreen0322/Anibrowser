@@ -20,14 +20,14 @@ function Navbar() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     // Redirect to anime search page with the search query as the id
-    navigate(`/anime-search/${searchQuery}/1`);
+    navigate(`/anime/search/${searchQuery}/1`);
   };
 
   const handleGenreSubmit = (event) => {
     // Must be a valid selection before we proceed.
     if (filterOption !== "" && filterOption !== "0") {
       event.preventDefault();
-      navigate(`/genre-search/${filterOption}/1`);
+      navigate(`/anime/genre-search/${filterOption}/1`);
     }
   };
 
@@ -60,8 +60,13 @@ function Navbar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" href="/top/1">
+              <a className="nav-link active" href="/anime/top/1">
                 Top Anime
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link active" href="/manga/top/1">
+                Top Manga
               </a>
             </li>
           </ul>

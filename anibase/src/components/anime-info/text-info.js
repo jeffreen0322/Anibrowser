@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./text-info.css";
 
 export default function AnimeTextInfo({ data }) {
+  const typeObj = useParams("type");
   return (
     <ul className="text-info">
       <li>
@@ -28,7 +29,9 @@ export default function AnimeTextInfo({ data }) {
         {data.genres &&
           data.genres.map((genre, index) => (
             <span key={genre.mal_id}>
-              <Link to={`/genre-search/${genre.name}/1`}>{genre.name}</Link>
+              <Link to={`/${typeObj.type}/genre-search/${genre.name}/1`}>
+                {genre.name}
+              </Link>
               {index !== data.genres.length - 1 && ", "}
             </span>
           ))}

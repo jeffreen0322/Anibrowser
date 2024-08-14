@@ -3,14 +3,16 @@ import Category from "../named-header/category";
 import AnimeEntry from "../anime-entry/animeEntry";
 import { useEffect, useState } from "react";
 import "./recommended.css";
+import { useParams } from "react-router-dom";
 
 export default function RecommendedAnime({ id }) {
   const [recommendedAnime, SetRecommendedAnime] = useState([]);
+  const typeObj = useParams("type");
 
   // Async function to fetch from api.
   const GetRecommendedAnime = async () => {
     const temp = await fetch(
-      "https://api.jikan.moe/v4/anime/" + id + "/recommendations"
+      `https://api.jikan.moe/v4/${typeObj.type}/` + id + "/recommendations"
     ).then((res) => res.json());
 
     // Set the top animes.
@@ -26,7 +28,11 @@ export default function RecommendedAnime({ id }) {
     <div>
       {recommendedAnime.length !== 0 ? (
         <>
-          <Category name="Recommended Anime" />
+          <Category
+            name={`Recommended ${
+              typeObj.type.charAt(0).toUpperCase() + typeObj.type.slice(1)
+            }`}
+          />
           <div className="recommendation">
             {recommendedAnime.map((anime) => (
               <AnimeEntry

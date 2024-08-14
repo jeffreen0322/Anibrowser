@@ -17,10 +17,13 @@ export default function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/top/:page" element={<TopPage />} />
-          <Route path="/anime/:id" element={<AnimePage />} />
-          <Route path="/anime-search/:id/:page/" element={<AnimeSearch />} />
-          <Route path="/genre-search/:genre/:page/" element={<GenreSearch />} />
+          <Route path="/:type/top/:page" element={<TopPage />} />
+          <Route path="/:type/:id" element={<AnimePage />} />
+          <Route path="/:type/search/:id/:page/" element={<AnimeSearch />} />
+          <Route
+            path="/:type/genre-search/:genre/:page/"
+            element={<GenreSearch />}
+          />
         </Routes>
       </Router>
     </>

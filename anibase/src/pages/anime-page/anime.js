@@ -7,6 +7,7 @@ import CharacterDisplayButton from "../../components/display/character/character
 
 export default function AnimePage() {
   const idObj = useParams("id");
+  const typeObj = useParams("type");
   const [anime, SetAnime] = useState({
     mal_id: "",
     title: "",
@@ -17,12 +18,16 @@ export default function AnimePage() {
   });
 
   const [characters, SetCharacters] = useState([]);
+  const type =
+    typeObj.type === "anime"
+      ? "https://api.jikan.moe/v4/anime/"
+      : "https://api.jikan.moe/v4/manga/";
 
   // Async function to fetch from api.
   const GetAnime = async () => {
-    const temp = await fetch(
-      "https://api.jikan.moe/v4/anime/" + idObj.id + "/full"
-    ).then((res) => res.json());
+    const temp = await fetch(type + idObj.id + "/full").then((res) =>
+      res.json()
+    );
 
     // Set the top animes.
     SetAnime(temp.data);
@@ -31,7 +36,7 @@ export default function AnimePage() {
   // Async function to fetch from api.
   const GetCharacters = async () => {
     const temp = await fetch(
-      "https://api.jikan.moe/v4/anime/" + idObj.id + "/characters"
+      `https://api.jikan.moe/v4/${typeObj.type}/` + idObj.id + "/characters"
     ).then((res) => res.json());
 
     // Set the characters..

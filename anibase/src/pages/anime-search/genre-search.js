@@ -3,7 +3,7 @@ import AnimeEntry from "../../components/anime-entry/animeEntry";
 import Category from "../../components/named-header/category";
 import Pagination from "../../components/pagination/pagination";
 import getUniqueEntries from "../../helpers/getUniqueEntries";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import genreObj from "../../data/genres";
 import "./anime-search.css";
 
@@ -30,11 +30,12 @@ function GetResults() {
 
   const idObj = useParams("genre");
   const idObj2 = useParams("page");
+  const typeObj = useParams("type");
 
   // Async function to fetch from api.
   const GetAnimeResults = async () => {
     const temp = await fetch(
-      "https://api.jikan.moe/v4/anime?genres=" +
+      `https://api.jikan.moe/v4/${typeObj.type}?genres=` +
         genreObj[1].get(idObj.genre) +
         "&" +
         "page=" +
@@ -54,12 +55,32 @@ function GetResults() {
 }
 
 function AnimeSearchList({ animeResults }) {
+  const navigate = useNavigate();
   const searchResults = getUniqueEntries(animeResults);
   const idObj = useParams("genre");
+  const typeObj = useParams("type");
+  const handleRedirect = () => {
+    navigate(
+      `/${typeObj.type === "anime" ? "manga" : "anime"}/genre-search/${
+        idObj.genre
+      }/1`
+    );
+
+    window.location.reload();
+  };
 
   return (
     <div>
-      <Category name={idObj.genre} />
+      <Category
+        name={`${idObj.genre} (${
+          typeObj.type.charAt(0).toUpperCase() + typeObj.type.slice(1)
+        })`}
+      />
+      <div className="type-filter">
+        <button className="filter-btn" onClick={handleRedirect}>
+          {typeObj.type === "anime" ? "Manga" : "Anime"}
+        </button>
+      </div>
       <div className="results">
         {searchResults.map((anime) => (
           <AnimeEntry
