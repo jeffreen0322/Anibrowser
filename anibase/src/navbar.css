@@ -2,6 +2,11 @@
   height: 45px;
 }
 
+.btn {
+  height: 40px;
+  width: 40px;
+}
+
 .d-flex {
   margin-right: 1rem;
 }
