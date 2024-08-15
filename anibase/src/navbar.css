@@ -7,6 +7,12 @@
   width: 40px;
 }
 
+.bi-search {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
 .d-flex {
   margin-right: 1rem;
 }
