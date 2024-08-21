@@ -36,20 +36,23 @@ export default function AnimeTextInfo({ data }) {
             </span>
           ))}
       </li>
-
-      <li>
-        <strong>Year</strong>: {data.year}
-      </li>
-      <li>
-        <strong>Studio</strong>:{" "}
-        {data.studios &&
-          data.studios.map((studio, index) => (
-            <span key={studio.mal_id}>
-              {studio.name}
-              {index !== data.studios.length - 1 && ", "}
-            </span>
-          ))}
-      </li>
+      {typeObj.type === "anime" ? (
+        <li>
+          <strong>Year</strong>: {data.year}
+        </li>
+      ) : null}
+      {typeObj.type === "anime" ? (
+        <li>
+          <strong>Studio</strong>:{" "}
+          {data.studios &&
+            data.studios.map((studio, index) => (
+              <span key={studio.mal_id}>
+                {studio.name}
+                {index !== data.studios.length - 1 && ", "}
+              </span>
+            ))}
+        </li>
+      ) : null}
     </ul>
   );
 }
