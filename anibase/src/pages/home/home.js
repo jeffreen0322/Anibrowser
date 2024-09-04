@@ -1,7 +1,9 @@
 import React from "react";
 import "./home.css";
 import SeasonalList from "../../components/seasonalList";
+import myImage from "./images/anibrowser.png";
 
+/*
 const items = [
   {
     className: "bi bi-star-fill",
@@ -20,15 +22,6 @@ const items = [
     descriptor: "View all the latest series from the click of a button.",
   },
 ];
-
-export default function HomePage() {
-  return (
-    <div>
-      <About />
-      <SeasonalList />
-    </div>
-  );
-}
 
 function About() {
   return (
@@ -68,6 +61,25 @@ function Item({ description, className, path }) {
     <div className="item">
       <Icon className={className} path={path} />
       <p>{description}</p>
+    </div>
+  );
+}
+*/
+
+export default function HomePage() {
+  return (
+    <div>
+      {/* <About /> */}
+      <MainPic />
+      <SeasonalList />
+    </div>
+  );
+}
+
+function MainPic() {
+  return (
+    <div className="picture">
+      <img src={myImage} alt="Anibrowser Picture" id="anibrowser" />
     </div>
   );
 }
