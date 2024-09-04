@@ -1,3 +1,20 @@
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  80% {
+    opacity: 0.5;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
+
 body {
   background-image: url("../../images/night-sky.png");
   background-repeat: no-repeat;
@@ -23,6 +40,19 @@ p {
   padding-left: 5px;
   padding-right: 5px;
   background-color: #091941;
+}
+
+.picture {
+  animation: fadeInAnimation 1200ms 800ms backwards;
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.picture img {
+  width: 75%;
+  opacity: 0.9;
+  border-radius: 5%;
 }
 
 .title-header {
@@ -51,6 +81,7 @@ p {
 
 .seasonal,
 .upcoming {
+  animation: fadeInAnimation 1200ms 800ms backwards;
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
