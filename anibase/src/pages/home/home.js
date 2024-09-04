@@ -64,25 +64,6 @@ function Item({ description, className, path }) {
     </div>
   );
 }
-*/
-
-export default function HomePage() {
-  return (
-    <div>
-      {/* <About /> */}
-      <MainPic />
-      <SeasonalList />
-    </div>
-  );
-}
-
-function MainPic() {
-  return (
-    <div className="picture">
-      <img src={myImage} alt="Anibrowser Picture" id="anibrowser" />
-    </div>
-  );
-}
 
 function Icon({ className, path }) {
   return (
@@ -96,5 +77,25 @@ function Icon({ className, path }) {
     >
       <path d={path} />
     </svg>
+  );
+}
+
+*/
+
+export default function HomePage() {
+  return (
+    <div className="homePage">
+      {/* <About /> */}
+      <MainPic />
+      <SeasonalList />
+    </div>
+  );
+}
+
+function MainPic() {
+  return (
+    <div className="picture">
+      <img src={myImage} alt="Anibrowser Picture" id="anibrowser" />
+    </div>
   );
 }

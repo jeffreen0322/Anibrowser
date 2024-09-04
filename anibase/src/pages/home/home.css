@@ -31,7 +31,11 @@ p {
   color: aliceblue;
 }
 
-.about {
+.homePage {
+  animation: fadeInAnimation 1200ms 800ms backwards;
+}
+
+/* .about {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,10 +44,9 @@ p {
   padding-left: 5px;
   padding-right: 5px;
   background-color: #091941;
-}
+} */
 
 .picture {
-  animation: fadeInAnimation 1200ms 800ms backwards;
   display: flex;
   justify-content: center;
   padding-top: 2rem;
@@ -59,7 +62,7 @@ p {
   color: aliceblue;
 }
 
-.item-list {
+/* .item-list {
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: auto auto;
@@ -77,11 +80,10 @@ p {
   justify-content: center;
   gap: 1rem;
   color: aliceblue;
-}
+} */
 
 .seasonal,
 .upcoming {
-  animation: fadeInAnimation 1200ms 800ms backwards;
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
