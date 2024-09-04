@@ -32,7 +32,10 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav
+      className="navbar navbar-expand-lg navbar-dark"
+      style={{ backgroundColor: "#162E54" }}
+    >
       <div className="container">
         <a className="navbar-brand" href="/">
           <img
