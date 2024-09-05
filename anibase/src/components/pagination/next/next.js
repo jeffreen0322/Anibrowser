@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./next.css";
+import "../pgn-btn.css";
 
 export default function NextButton({ directory, page, count }) {
   const navigate = useNavigate();
@@ -22,8 +22,13 @@ export default function NextButton({ directory, page, count }) {
   };
 
   return (
-    <button id="next" type="button" onClick={handleRedirect}>
-      Next
+    <button
+      className="pgn-btn"
+      id="next"
+      type="button"
+      onClick={handleRedirect}
+    >
+      <strong>Next</strong>
     </button>
   );
 }
