@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./prev.css";
+import "../pgn-btn.css";
 
 export default function PreviousButton({ directory, page }) {
   const navigate = useNavigate();
@@ -18,8 +18,13 @@ export default function PreviousButton({ directory, page }) {
   };
 
   return (
-    <button id="prev" type="button" onClick={handleRedirect}>
-      Prev
+    <button
+      className="pgn-btn"
+      id="prev"
+      type="button"
+      onClick={handleRedirect}
+    >
+      <strong>Prev</strong>
     </button>
   );
 }
