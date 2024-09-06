@@ -7,6 +7,7 @@ export default function Pagination({ directory, page, count }) {
   return (
     <span className="pagination">
       <PreviousButton directory={directory} page={page} />
+      <b id="page-num">{page}</b>
       <NextButton directory={directory} page={page} count={count} />
     </span>
   );
