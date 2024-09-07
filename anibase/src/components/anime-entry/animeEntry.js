@@ -34,8 +34,10 @@ export default function AnimeEntry({
         {score !== null ? <li>Score: {score}</li> : null}
         {showEpisode ? (
           <li>
-            {typeObj.type === "anime" ? "Episodes" : "Chapters"}:{" "}
-            {episodes == null ? "N/A" : episodes}
+            {typeObj.type === "anime" || typeObj.type === undefined
+              ? "Episodes"
+              : "Chapters"}
+            : {episodes == null ? "N/A" : episodes}
           </li>
         ) : null}
         <li style={{ color: "wheat" }}>
