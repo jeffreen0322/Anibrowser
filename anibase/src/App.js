@@ -1,5 +1,7 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { supabase } from "./components/supabase/client";
 import { Analytics } from "@vercel/analytics/react";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,6 +14,22 @@ import AnimeSearch from "./pages/anime-search/anime-search";
 import GenreSearch from "./pages/anime-search/genre-search";
 
 export default function App() {
+  const [accounts, setAccounts] = useState([]);
+
+  useEffect(() => {
+    fetchAccounts();
+  }, []);
+
+  async function fetchAccounts() {
+    let { data: accounts, error } = await supabase.from("accounts").select("*");
+
+    if (error) {
+      console.log("Error fetching accounts.");
+    } else {
+      console.log(accounts);
+    }
+  }
+
   return (
     <>
       <Router>
