@@ -38,4 +38,5 @@ function NavigateLink(navigate, nextPage) {
   const currentPath = window.location.pathname;
   const newPath = currentPath.replace(/\/\d+$/, `/${nextPage}`);
   navigate(newPath, { replace: true });
+  window.location.reload();
 }
