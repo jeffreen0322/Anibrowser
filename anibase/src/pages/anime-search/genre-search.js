@@ -10,7 +10,8 @@ import "./anime-search.css";
 export default function GenreSearch() {
   const idObj = useParams("genre");
   const idObj2 = useParams("page");
-  const directory = "/genre-search/" + idObj.genre + "/";
+  const typeObj = useParams("type");
+  const directory = `${typeObj.type}/genre-search/${idObj.genre}/`;
   const searchResults = GetResults();
   return (
     <div>

@@ -2,8 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../pgn-btn.css";
 
-export default function NextButton({ directory, page, count }) {
+export default function NextButton({ page, count }) {
   const navigate = useNavigate();
+
   const handleRedirect = () => {
     const nextPage = (Number(page) + 1).toString();
 
@@ -12,11 +13,11 @@ export default function NextButton({ directory, page, count }) {
         (count.current_page - 1) * count.items.per_page + count.items.count <
         count.items.total
       ) {
-        NavigateLink(navigate, directory, nextPage);
+        NavigateLink(navigate, nextPage);
       }
     } else {
       if (count.items.count < count.items.total) {
-        NavigateLink(navigate, directory, nextPage);
+        NavigateLink(navigate, nextPage);
       }
     }
   };
@@ -33,10 +34,8 @@ export default function NextButton({ directory, page, count }) {
   );
 }
 
-function NavigateLink(navigation, directory, nextPage) {
-  navigation(directory + nextPage);
-
-  if (typeof window !== "undefined") {
-    window.location.href = directory + nextPage;
-  }
+function NavigateLink(navigate, nextPage) {
+  const currentPath = window.location.pathname;
+  const newPath = currentPath.replace(/\/\d+$/, `/${nextPage}`);
+  navigate(newPath, { replace: true });
 }
