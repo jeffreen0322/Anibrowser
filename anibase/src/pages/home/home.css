@@ -35,17 +35,6 @@ p {
   animation: fadeInAnimation 1200ms 800ms backwards;
 }
 
-/* .about {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 10px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: #091941;
-} */
-
 .picture {
   display: flex;
   justify-content: center;
@@ -61,26 +50,6 @@ p {
 .title-header {
   color: aliceblue;
 }
-
-/* .item-list {
-  display: grid;
-  grid-template-rows: auto auto;
-  grid-template-columns: auto auto;
-  text-align: center;
-  gap: 3rem;
-}
-
-.item:nth-child(3) {
-  grid-column: span 2;
-}
-
-.item {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 1rem;
-  color: aliceblue;
-} */
 
 .seasonal,
 .upcoming {

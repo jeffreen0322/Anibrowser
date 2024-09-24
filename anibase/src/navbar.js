@@ -58,17 +58,30 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
+              <a
+                className="nav-link active link"
+                id="home"
+                aria-current="page"
+                href="/"
+              >
                 Home
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" href="/anime/top/1">
+              <a
+                className="nav-link active link"
+                id="top-anime"
+                href="/anime/top/1"
+              >
                 Top Anime
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" href="/manga/top/1">
+              <a
+                className="nav-link active link"
+                id="top-manga"
+                href="/manga/top/1"
+              >
                 Top Manga
               </a>
             </li>

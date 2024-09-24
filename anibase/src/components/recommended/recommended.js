@@ -2,8 +2,8 @@ import React from "react";
 import Category from "../named-header/category";
 import AnimeEntry from "../anime-entry/animeEntry";
 import { useEffect, useState } from "react";
-import "./recommended.css";
 import { useParams } from "react-router-dom";
+import "./recommended.css";
 
 export default function RecommendedAnime({ id }) {
   const [recommendedAnime, SetRecommendedAnime] = useState([]);
