@@ -1,0 +1,17 @@
+.bi-chevron-up {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+  background-color: #162e54;
+  padding: 15px;
+  height: 65px;
+  width: 65px;
+}
+
+.bi-chevron-up:hover {
+  cursor: pointer;
+  user-select: none;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px 5px rgba(52, 152, 219, 0.7);
+}
