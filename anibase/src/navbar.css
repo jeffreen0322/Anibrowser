@@ -2,6 +2,32 @@
   height: 45px;
 }
 
+.link,
+.link:link,
+.link:visited {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 4px;
+  display: inline-block;
+}
+
+/* Default underline (hidden) */
+.link::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  transition: width 0.3s ease-in-out;
+}
+
+.link:hover::before {
+  width: 100%;
+}
+
 .bi-search {
   text-align: center;
   align-items: center;
