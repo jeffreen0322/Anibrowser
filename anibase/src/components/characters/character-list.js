@@ -5,7 +5,7 @@ import "./character-list.css";
 export default function CharacterList({ characters }) {
   return (
     <div className="characters">
-      {characters.map((data) => (
+      {characters.slice(0, 16).map((data) => (
         <Character
           key={data.character.mal_id}
           role={data.role}
