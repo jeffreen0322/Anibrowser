@@ -12,6 +12,7 @@ import HomePage from "./pages/home/home";
 import AnimePage from "./pages/anime-page/anime";
 import AnimeSearch from "./pages/anime-search/anime-search";
 import GenreSearch from "./pages/anime-search/genre-search";
+import ReccomendationPage from "./pages/reccomendation/reccomendation";
 
 export default function App() {
   const [accounts, setAccounts] = useState([]);
@@ -42,6 +43,11 @@ export default function App() {
           <Route
             path="/:type/genre-search/:genre/:page/"
             element={<GenreSearch />}
+          />
+
+          <Route
+            path="/:type/:id/reccomendation/"
+            element={<ReccomendationPage />}
           />
         </Routes>
       </Router>
