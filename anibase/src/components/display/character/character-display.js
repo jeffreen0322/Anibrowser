@@ -12,12 +12,12 @@ export default function CharacterDisplayButton({ list }) {
 
   return display === false ? (
     <button id="char-display" onClick={ToggleDisplay}>
-      Show Characters
+      <strong>Show Characters</strong>
     </button>
   ) : (
     <div>
       <button id="char-display" onClick={ToggleDisplay}>
-        Hide Characters
+        <strong>Hide Characters</strong>
       </button>
       <CharacterList characters={list} />
     </div>
