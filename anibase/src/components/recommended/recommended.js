@@ -34,7 +34,7 @@ export default function RecommendedAnime({ id }) {
             }`}
           />
           <div className="recommendation">
-            {recommendedAnime.map((anime) => (
+            {recommendedAnime.slice(0, 15).map((anime) => (
               <AnimeEntry
                 key={anime.entry.mal_id}
                 id={anime.entry.mal_id}
