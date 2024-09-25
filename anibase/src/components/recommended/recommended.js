@@ -69,7 +69,9 @@ export default function RecommendedAnime({ id, limit }) {
       recommendedAnime.length > 15 &&
       limit.entries !== -1 ? (
         <Link to="./reccomendation" className="btn-container">
-          <button className="rec-btn">Show More Recommendations</button>
+          <button className="rec-btn">
+            <strong>Show More Recommendations</strong>
+          </button>
         </Link>
       ) : null}
     </div>
