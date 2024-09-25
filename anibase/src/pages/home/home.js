@@ -9,7 +9,7 @@ export default function HomePage() {
     <div className="homePage">
       <MainPic />
       <SeasonalList />
-      {/* <UpChevron id="#anibrowser" /> */}
+      <UpChevron id="anibrowser" />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import Pagination from "../../components/pagination/pagination";
 import getUniqueEntries from "../../helpers/getUniqueEntries";
 import { useNavigate, useParams } from "react-router-dom";
 import "./anime-search.css";
+import UpChevron from "../../components/redirect/up/up";
 
 export default function AnimeSearch() {
   const idObj = useParams("id");
@@ -20,6 +21,7 @@ export default function AnimeSearch() {
         page={idObj2.page}
         count={searchResults[1]}
       />
+      <UpChevron id="category-header" />
     </div>
   );
 }
