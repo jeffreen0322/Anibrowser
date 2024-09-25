@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AnimeGeneral from "../../components/anime-info/anime-general";
 import RecommendedAnime from "../../components/recommended/recommended";
-import "./anime.css";
 import CharacterDisplayButton from "../../components/display/character/character-display";
+import UpChevron from "../../components/redirect/up/up";
+import "./anime.css";
 
 export default function AnimePage() {
   const idObj = useParams("id");
@@ -54,6 +55,7 @@ export default function AnimePage() {
       <AnimeGeneral anime={anime} />
       <CharacterDisplayButton list={characters} />
       <RecommendedAnime id={idObj.id} />
+      <UpChevron id="category-header" />
     </div>
   );
 }

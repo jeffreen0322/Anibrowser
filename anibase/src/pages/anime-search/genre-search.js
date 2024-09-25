@@ -4,6 +4,7 @@ import Category from "../../components/named-header/category";
 import Pagination from "../../components/pagination/pagination";
 import getUniqueEntries from "../../helpers/getUniqueEntries";
 import { useNavigate, useParams } from "react-router-dom";
+import UpChevron from "../../components/redirect/up/up";
 import genreObj from "../../data/genres";
 import "./anime-search.css";
 
@@ -20,6 +21,7 @@ export default function GenreSearch() {
         page={idObj2.page}
         count={searchResults[1]}
       />
+      <UpChevron id="category-header" />
     </div>
   );
 }
