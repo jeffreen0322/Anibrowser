@@ -34,6 +34,7 @@ function Navbar() {
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark"
+      id="navigation"
       style={{ backgroundColor: "#162E54" }}
     >
       <div className="container">

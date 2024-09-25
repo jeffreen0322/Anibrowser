@@ -17,7 +17,7 @@ export default function TopPage() {
     <div>
       <TopList />
       <Pagination directory={api} page={objId.page} count={searchResults} />
-      <UpChevron id="category-header" />
+      <UpChevron id="navigation" />
     </div>
   );
 }

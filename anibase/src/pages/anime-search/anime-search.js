@@ -21,7 +21,7 @@ export default function AnimeSearch() {
         page={idObj2.page}
         count={searchResults[1]}
       />
-      <UpChevron id="category-header" />
+      <UpChevron id="navigation" />
     </div>
   );
 }

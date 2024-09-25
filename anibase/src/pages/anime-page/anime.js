@@ -55,7 +55,7 @@ export default function AnimePage() {
       <AnimeGeneral anime={anime} />
       <CharacterDisplayButton list={characters} />
       <RecommendedAnime id={idObj.id} />
-      <UpChevron id="category-header" />
+      <UpChevron id="navigation" />
     </div>
   );
 }
