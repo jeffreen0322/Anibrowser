@@ -2,10 +2,10 @@ import React from "react";
 import Category from "../named-header/category";
 import AnimeEntry from "../anime-entry/animeEntry";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./recommended.css";
 
-export default function RecommendedAnime({ id }) {
+export default function RecommendedAnime({ id, limit }) {
   const [recommendedAnime, SetRecommendedAnime] = useState([]);
   const typeObj = useParams("type");
 
@@ -34,20 +34,43 @@ export default function RecommendedAnime({ id }) {
             }`}
           />
           <div className="recommendation">
-            {recommendedAnime.slice(0, 15).map((anime) => (
-              <AnimeEntry
-                key={anime.entry.mal_id}
-                id={anime.entry.mal_id}
-                title={anime.entry.title}
-                score={null}
-                episodes={null}
-                image={anime.entry.images.jpg.image_url}
-                season={null}
-                showEpisode={false}
-              />
-            ))}
+            {limit.entries !== -1
+              ? recommendedAnime
+                  .slice(0, limit.entries)
+                  .map((anime) => (
+                    <AnimeEntry
+                      key={anime.entry.mal_id}
+                      id={anime.entry.mal_id}
+                      title={anime.entry.title}
+                      score={null}
+                      episodes={null}
+                      image={anime.entry.images.jpg.image_url}
+                      season={null}
+                      showEpisode={false}
+                    />
+                  ))
+              : recommendedAnime.map((anime) => (
+                  <AnimeEntry
+                    key={anime.entry.mal_id}
+                    id={anime.entry.mal_id}
+                    title={anime.entry.title}
+                    score={null}
+                    episodes={null}
+                    image={anime.entry.images.jpg.image_url}
+                    season={null}
+                    showEpisode={false}
+                  />
+                ))}
           </div>
         </>
+      ) : null}
+
+      {recommendedAnime &&
+      recommendedAnime.length > 15 &&
+      limit.entries !== -1 ? (
+        <Link to="./reccomendation" className="btn-container">
+          <button className="rec-btn">Show More Recommendations</button>
+        </Link>
       ) : null}
     </div>
   );
