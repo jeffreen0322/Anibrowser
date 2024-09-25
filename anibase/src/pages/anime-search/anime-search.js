@@ -78,7 +78,7 @@ function AnimeSearchList({ animeResults }) {
       />
       <div className="type-filter">
         <button className="filter-btn" onClick={handleRedirect}>
-          {typeObj.type === "anime" ? "Manga" : "Anime"}
+          <strong>{typeObj.type === "anime" ? "Manga" : "Anime"}</strong>
         </button>
       </div>
       <div className="results">

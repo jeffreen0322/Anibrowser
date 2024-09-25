@@ -3,11 +3,15 @@
 }
 
 .filter-btn {
+  background-color: #162e54;
+  color: whitesmoke;
   padding: 10px 20px;
+  opacity: 0.8;
+  font-style: bold;
 }
 
 .filter-btn:hover {
-  box-shadow: 0 0 20px 5px #3498dbb3;
+  box-shadow: 0 0 20px 5px rgba(52, 152, 219, 0.7);
 }
 
 .results {
