@@ -1,0 +1,46 @@
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  background-color: #162e54;
+  padding: 2rem;
+  align-items: center;
+  justify-items: center;
+  box-sizing: border-box;
+  border-top: 2px solid black;
+}
+
+.footer > a {
+  text-decoration: none;
+}
+
+.product,
+.socials,
+.standard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.entry-list {
+  list-style-type: none;
+}
+
+.entry-list > li {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.entry-list > li > a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.entry-list > li > a:hover {
+  color: #014aad;
+}
+
+#footer-logo {
+  height: 90px;
+}

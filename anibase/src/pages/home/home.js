@@ -1,8 +1,9 @@
 import React from "react";
 import "./home.css";
 import SeasonalList from "../../components/seasonalList";
-import myImage from "./images/anibrowser.png";
 import UpChevron from "../../components/redirect/up/up";
+import Footer from "../../components/footer/footer";
+import myImage from "./images/anibrowser.png";
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <MainPic />
       <SeasonalList />
       <UpChevron id="navigation" />
+      <Footer />
     </div>
   );
 }
