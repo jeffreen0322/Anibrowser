@@ -2,10 +2,6 @@
   height: 45px;
 }
 
-.navbar {
-  border-bottom: 2px solid black;
-}
-
 .link,
 .link:link,
 .link:visited {
