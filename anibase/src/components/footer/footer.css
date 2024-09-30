@@ -43,3 +43,26 @@
 #footer-logo {
   height: 90px;
 }
+
+@media (min-width: 437px) and (max-width: 470px) {
+  #footer-logo {
+    height: 70px;
+  }
+
+  .entry-list > li {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 436px) {
+  #footer-logo {
+    height: 70px;
+  }
+
+  .footer {
+    padding: 1rem;
+  }
+  .entry-list > li {
+    flex-direction: column;
+  }
+}
