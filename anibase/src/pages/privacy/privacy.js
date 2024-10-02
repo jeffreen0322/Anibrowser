@@ -2,6 +2,7 @@ import React from "react";
 import Category from "../../components/named-header/category";
 import Footer from "../../components/footer/footer";
 import "./privacy.css";
+import UpChevron from "../../components/redirect/up/up";
 
 export default function PrivacyPage() {
   return (
@@ -9,6 +10,7 @@ export default function PrivacyPage() {
       <Category name="Privacy Policy" />
       <PrivacyPolicy />
       <Footer />
+      <UpChevron id="navigation" />
     </div>
   );
 }

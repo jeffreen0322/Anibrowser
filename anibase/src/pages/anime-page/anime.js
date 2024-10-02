@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import AnimeGeneral from "../../components/anime-info/anime-general";
 import RecommendedAnime from "../../components/recommended/recommended";
 import CharacterDisplayButton from "../../components/display/character/character-display";
+import Footer from "../../components/footer/footer";
 import UpChevron from "../../components/redirect/up/up";
 import "./anime.css";
 
@@ -55,6 +56,7 @@ export default function AnimePage() {
       <AnimeGeneral anime={anime} />
       <CharacterDisplayButton list={characters} />
       <RecommendedAnime id={idObj.id} limit={{ entries: 15 }} />
+      <Footer />
       <UpChevron id="navigation" />
     </div>
   );
