@@ -3,6 +3,7 @@ import TopList from "../../components/topList";
 import Pagination from "../../components/pagination/pagination";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Footer from "../../components/footer/footer";
 import UpChevron from "../../components/redirect/up/up";
 import "./top.css";
 
@@ -17,6 +18,7 @@ export default function TopPage() {
     <div>
       <TopList />
       <Pagination directory={api} page={objId.page} count={searchResults} />
+      <Footer />
       <UpChevron id="navigation" />
     </div>
   );

@@ -1,0 +1,12 @@
+.policy > b {
+  color: aliceblue;
+}
+
+.policy > ul,
+.inner {
+  list-style-type: none;
+}
+
+.policy {
+  padding: 3rem;
+}

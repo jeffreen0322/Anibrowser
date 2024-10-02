@@ -1,23 +1,17 @@
 import React from "react";
 import "./home.css";
 import SeasonalList from "../../components/seasonalList";
-import myImage from "./images/anibrowser.png";
 import UpChevron from "../../components/redirect/up/up";
+import AnibrowserGraphic from "../../components/graphics/anibrowser-graphic";
+import Footer from "../../components/footer/footer";
 
 export default function HomePage() {
   return (
     <div className="homePage">
-      <MainPic />
+      <AnibrowserGraphic />
       <SeasonalList />
       <UpChevron id="navigation" />
-    </div>
-  );
-}
-
-function MainPic() {
-  return (
-    <div className="picture">
-      <img src={myImage} alt="Anibrowser Picture" id="anibrowser" />
+      <Footer />
     </div>
   );
 }

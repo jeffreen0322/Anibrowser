@@ -35,18 +35,6 @@ p {
   animation: fadeInAnimation 1200ms 800ms backwards;
 }
 
-.picture {
-  display: flex;
-  justify-content: center;
-  padding-top: 2rem;
-}
-
-.picture img {
-  width: 75%;
-  opacity: 0.9;
-  border-radius: 5%;
-}
-
 .title-header {
   color: aliceblue;
 }
@@ -74,10 +62,6 @@ p {
   .upcoming {
     grid-template-columns: 1fr 1fr 1fr;
   }
-
-  .picture img {
-    width: 90%;
-  }
 }
 
 @media (min-width: 600px) and (max-width: 879px) {
@@ -91,10 +75,6 @@ p {
   .upcoming {
     grid-template-columns: 1fr 1fr;
   }
-
-  .picture img {
-    width: 90%;
-  }
 }
 
 @media (min-width: 296px) and (max-width: 599px) {
@@ -107,10 +87,5 @@ p {
   .seasonal,
   .upcoming {
     grid-template-columns: 1fr;
-  }
-
-  .picture img {
-    content: url("../home/images/anibrowser_mobile.png");
-    width: 90%;
   }
 }

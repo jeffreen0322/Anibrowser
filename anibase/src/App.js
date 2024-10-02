@@ -13,6 +13,8 @@ import AnimePage from "./pages/anime-page/anime";
 import AnimeSearch from "./pages/anime-search/anime-search";
 import GenreSearch from "./pages/anime-search/genre-search";
 import ReccomendationPage from "./pages/reccomendation/reccomendation";
+import AboutPage from "./pages/about/about";
+import PrivacyPage from "./pages/privacy/privacy";
 
 export default function App() {
   const [accounts, setAccounts] = useState([]);
@@ -37,6 +39,8 @@ export default function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/:type/top/:page" element={<TopPage />} />
           <Route path="/:type/:id" element={<AnimePage />} />
           <Route path="/:type/search/:id/:page/" element={<AnimeSearch />} />
