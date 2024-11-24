@@ -73,6 +73,12 @@ export default function Footer() {
           </li>
         </ul>
       </div>
+      <hr></hr>
+      <div className="copyright-box">
+        <p className="copyright">
+          © Copyright 2024, All Rights Reserved by Anibrowser
+        </p>
+      </div>
     </div>
   );
 }

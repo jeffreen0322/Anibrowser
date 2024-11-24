@@ -40,6 +40,12 @@
   color: #014aad;
 }
 
+.copyright-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #footer-logo {
   height: 90px;
 }
