@@ -14,6 +14,14 @@ export const Form = ({ label }) => {
     });
   };
 
+  const directRegister = () => {
+    window.location.href = "/signup";
+  };
+
+  const directLogin = () => {
+    window.location.href = "/login";
+  };
+
   // Contacting the backend
   const handleAccountCreation = async () => {
     try {
@@ -57,16 +65,18 @@ export const Form = ({ label }) => {
           value={formData.password}
           onChange={handleChange}
         ></input>
-        <input type="submit" value={label}></input>
+        <input className="input-submit" type="submit" value={label}></input>
       </form>
       {label === "Log in" ? (
         <div>
           <hr></hr>
           <div className="reg-recovery">
-            <p>Forgot Password?</p>
+            <p className="lost-pw">Forgot Password?</p>
             <p>
               Don't have an account? {""}
-              <span className="reg-link">Register</span>
+              <span className="alt" onClick={directRegister}>
+                Register
+              </span>
             </p>
           </div>
         </div>
@@ -76,7 +86,9 @@ export const Form = ({ label }) => {
           <div className="reg-recovery">
             <p>
               Already have an account?{" "}
-              <span className="login-link">Log in</span>
+              <span className="alt" onClick={directLogin}>
+                Log in
+              </span>
             </p>
           </div>
         </div>
