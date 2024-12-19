@@ -1,0 +1,30 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+
+  padding: 5rem;
+  width: 30vw;
+  gap: 1rem;
+}
+
+.form-container hr,
+.form-container p,
+.form-container h1 {
+  color: black;
+}
+
+.form-container h1 {
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+}
+
+.input-txt {
+  margin-bottom: 1rem;
+}
