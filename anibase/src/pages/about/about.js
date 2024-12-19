@@ -1,8 +1,6 @@
 import React from "react";
 import Category from "../../components/named-header/category";
 import AnibrowserGraphic from "../../components/graphics/anibrowser-graphic";
-import Footer from "../../components/footer/footer";
-import UpChevron from "../../components/redirect/up/up";
 import "./about.css";
 
 export default function AboutPage() {
@@ -36,9 +34,6 @@ export default function AboutPage() {
         exciting. Our aim is to build upon what came before us, adding our own
         unique twist to improve usability, efficiency, and enjoyment.
       </p>
-
-      <Footer />
-      <UpChevron id="navigation" />
     </div>
   );
 }
