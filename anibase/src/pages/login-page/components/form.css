@@ -5,7 +5,7 @@
   background-color: white;
 
   padding: 5rem;
-  width: 30vw;
+  width: 30%;
   gap: 1rem;
 }
 
@@ -22,9 +22,39 @@
 .form {
   display: flex;
   flex-direction: column;
-  width: 20vw;
 }
 
 .input-txt {
   margin-bottom: 1rem;
+}
+
+@media (min-width: 881px) and (max-width: 1200px) {
+  .form-container {
+    width: 45vw;
+  }
+}
+
+@media (min-width: 632px) and (max-width: 881px) {
+  .form-container {
+    width: 60vw;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 632px) {
+  .form-container {
+    width: 75vw;
+  }
+}
+
+@media (min-width: 434px) and (max-width: 480px) {
+  .form-container {
+    width: 85vw;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 434px) {
+  .form-container {
+    width: 90vw;
+    padding: 4rem;
+  }
 }
