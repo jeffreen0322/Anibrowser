@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import genreObj from "./data/genres";
 import "./navbar.css";
@@ -8,6 +9,22 @@ function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterOption, setFilterOption] = useState("");
   const navigate = useNavigate();
+
+  /*
+  // Contacting the backend
+  const handleAccountCreation = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/add", {
+        email: "jeffreyenguyen@gmail.com",
+        username: "ForbiddenJ",
+        password: "Blueranger12",
+      });
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  */
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
