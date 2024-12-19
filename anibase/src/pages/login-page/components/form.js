@@ -64,14 +64,20 @@ export const Form = ({ label }) => {
           <hr></hr>
           <div className="reg-recovery">
             <p>Forgot Password?</p>
-            <p>Don't have an account? Register</p>
+            <p>
+              Don't have an account? {""}
+              <span className="reg-link">Register</span>
+            </p>
           </div>
         </div>
       ) : (
         <div>
           <hr></hr>
           <div className="reg-recovery">
-            <p>Already have an account? Log in</p>
+            <p>
+              Already have an account?{" "}
+              <span className="login-link">Log in</span>
+            </p>
           </div>
         </div>
       )}

@@ -5,7 +5,7 @@
   background-color: white;
 
   padding: 5rem;
-  width: 30%;
+  width: 475px;
   gap: 1rem;
 }
 
@@ -28,7 +28,7 @@
   margin-bottom: 1rem;
 }
 
-@media (min-width: 881px) and (max-width: 1200px) {
+/* @media (min-width: 881px) and (max-width: 1200px) {
   .form-container {
     width: 45vw;
   }
@@ -45,16 +45,17 @@
     width: 75vw;
   }
 }
+  */
 
-@media (min-width: 434px) and (max-width: 480px) {
+@media (min-width: 434px) and (max-width: 500px) {
   .form-container {
-    width: 85vw;
+    width: 400px;
   }
 }
 
 @media (min-width: 320px) and (max-width: 434px) {
   .form-container {
-    width: 90vw;
-    padding: 4rem;
+    width: 320px;
+    padding: 3rem;
   }
 }
