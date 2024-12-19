@@ -15,6 +15,8 @@ import GenreSearch from "./pages/anime-search/genre-search";
 import ReccomendationPage from "./pages/reccomendation/reccomendation";
 import AboutPage from "./pages/about/about";
 import PrivacyPage from "./pages/privacy/privacy";
+import LoginPage from "./pages/login-page/login";
+import SignupPage from "./pages/login-page/signup";
 
 export default function App() {
   const [accounts, setAccounts] = useState([]);
@@ -53,6 +55,8 @@ export default function App() {
             path="/:type/:id/reccomendation/"
             element={<ReccomendationPage />}
           />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
         </Routes>
       </Router>
       <Analytics />
