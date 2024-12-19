@@ -10,22 +10,6 @@ function Navbar() {
   const [filterOption, setFilterOption] = useState("");
   const navigate = useNavigate();
 
-  /*
-  // Contacting the backend
-  const handleAccountCreation = async () => {
-    try {
-      const response = await axios.post("http://localhost:5000/add", {
-        email: "jeffreyenguyen@gmail.com",
-        username: "ForbiddenJ",
-        password: "Blueranger12",
-      });
-      console.log(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  */
-
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -101,6 +85,16 @@ function Navbar() {
                 href="/manga/top/1"
               >
                 Top Manga
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link active link" id="logIn" href="/login">
+                Log in
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link active link" id="signUp" href="/signup">
+                Sign up
               </a>
             </li>
           </ul>
