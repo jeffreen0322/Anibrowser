@@ -2,11 +2,25 @@ import React from "react";
 import axios from "axios";
 import { useState } from "react";
 import { useAuth } from "../../../components/authentication/auth-context";
+import { useNavigate } from "react-router-dom";
 import "./form.css";
 
 export const Form = ({ label }) => {
   const { login } = useAuth();
-  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+  });
+
+  const swap = useNavigate();
+  const changeForm = () => {
+    swap(`${label === "Log In" ? "/signup" : "/login"}`, { replace: true });
+  };
+
+  const retrievePassword = () => {
+    swap("/password/reset", { replace: true });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,18 +30,11 @@ export const Form = ({ label }) => {
     });
   };
 
-  const directRegister = () => {
-    window.location.href = "/signup";
-  };
-
-  const directLogin = () => {
-    window.location.href = "/login";
-  };
-
   // Contacting the backend
   const handleAccountCreation = async () => {
     try {
       const response = await axios.post("http://localhost:5000/add", {
+        email: formData.email,
         username: formData.username,
         password: formData.password,
       });
@@ -41,6 +48,7 @@ export const Form = ({ label }) => {
   const handleLogin = async (e) => {
     try {
       const response = await axios.post("http://localhost:5000/login", {
+        email: formData.email,
         username: formData.username,
         password: formData.password,
       });
@@ -50,7 +58,7 @@ export const Form = ({ label }) => {
           response.data.username === formData.username &&
           response.data.password === formData.password
         ) {
-          login(formData.username);
+          login(response.data.username, response.data.email);
           window.location.href = "/";
         } else {
           alert("Username or password is incorrect.");
@@ -78,10 +86,22 @@ export const Form = ({ label }) => {
           }
         }}
       >
+        {label === "Sign Up" ? (
+          <>
+            <label>Email</label>
+            <input
+              className="input-txt"
+              placeholder="Enter email address"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            ></input>
+          </>
+        ) : null}
         <label>Username</label>
         <input
           className="input-txt"
-          placeholder="Enter Username"
+          placeholder="Enter username"
           name="username"
           value={formData.username}
           onChange={handleChange}
@@ -89,21 +109,21 @@ export const Form = ({ label }) => {
         <label>Password</label>
         <input
           className="input-txt"
-          placeholder="Enter Password"
+          placeholder="Enter password"
           name="password"
           value={formData.password}
           onChange={handleChange}
         ></input>
         <input className="input-submit" type="submit" value={label}></input>
       </form>
-      {label === "Log in" ? (
+      {label === "Log In" ? (
         <div>
           <hr></hr>
           <div className="reg-recovery">
             <p className="lost-pw">Forgot Password?</p>
             <p>
               Don't have an account? {""}
-              <span className="alt" onClick={directRegister}>
+              <span className="alt" onClick={changeForm}>
                 Register
               </span>
             </p>
@@ -115,7 +135,7 @@ export const Form = ({ label }) => {
           <div className="reg-recovery">
             <p>
               Already have an account?{" "}
-              <span className="alt" onClick={directLogin}>
+              <span className="alt" onClick={changeForm}>
                 Log in
               </span>
             </p>

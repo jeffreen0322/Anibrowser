@@ -88,7 +88,6 @@ function Navbar() {
                 Top Manga
               </a>
             </li>
-
             {!loggedIn ? (
               <>
                 <li className="nav-item">
