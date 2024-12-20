@@ -29,6 +29,23 @@ app.post("/add", async (req, res) => {
   }
 });
 
+app.post("/login", async (req, res) => {
+  const { username } = req.body;
+
+  try {
+    const result = await pool.query(
+      "SELECT * FROM account WHERE username = $1",
+      [username]
+    );
+
+    console.log("Query result:", result.rows[0]);
+
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 // get all accounts
 
 // get an account

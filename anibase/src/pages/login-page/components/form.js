@@ -1,9 +1,11 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import { useAuth } from "../../../components/authentication/auth-context";
 import "./form.css";
 
 export const Form = ({ label }) => {
+  const { login } = useAuth();
   const [formData, setFormData] = useState({ username: "", password: "" });
 
   const handleChange = (e) => {
@@ -29,7 +31,33 @@ export const Form = ({ label }) => {
         username: formData.username,
         password: formData.password,
       });
-      console.log(response.data);
+
+      window.location.href = "/login";
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleLogin = async (e) => {
+    try {
+      const response = await axios.post("http://localhost:5000/login", {
+        username: formData.username,
+        password: formData.password,
+      });
+
+      if (Object.keys(response.data).length !== 0) {
+        if (
+          response.data.username === formData.username &&
+          response.data.password === formData.password
+        ) {
+          login(formData.username);
+          window.location.href = "/";
+        } else {
+          alert("Username or password is incorrect.");
+        }
+      } else {
+        alert("Please insert a valid username and password.");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -42,10 +70,11 @@ export const Form = ({ label }) => {
       <form
         className="form"
         onSubmit={(e) => {
+          e.preventDefault();
           if (label === "Sign Up") {
             handleAccountCreation();
           } else {
-            console.log("Submit action is disabled for this label.");
+            handleLogin();
           }
         }}
       >

@@ -47,3 +47,8 @@
 .form-control {
   width: 200px;
 }
+
+.log-actions {
+  display: flex;
+  flex-direction: row;
+}
