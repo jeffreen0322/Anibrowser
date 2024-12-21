@@ -86,7 +86,7 @@ export const Form = ({ label }) => {
         password: formData.password,
       });
 
-      if (Object.keys(response.data).length !== 0) {
+      if (formData.username.length > 0 && formData.password.length > 0) {
         if (
           response.data.username === formData.username &&
           response.data.password === formData.password
@@ -97,7 +97,7 @@ export const Form = ({ label }) => {
           alert("Username or password is incorrect.");
         }
       } else {
-        alert("Please insert a valid username and password.");
+        alert("Please fill in all fields!");
       }
     } catch (err) {
       console.log(err);
