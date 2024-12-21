@@ -26,13 +26,21 @@ export const PasswordForm = ({ label, encrypted, iv }) => {
   // Contacting the backend
   const handlePasswordChange = async () => {
     try {
-      await axios.post("http://localhost:5000/password-reset", {
-        email: encrypted,
-        iv: iv,
-        password: formData.password,
-      });
+      if (formData.password.length > 0 && formData.passwordRetype.length > 0) {
+        if (formData.password === formData.passwordRetype) {
+          await axios.post("http://localhost:5000/password-reset", {
+            email: encrypted,
+            iv: iv,
+            password: formData.password,
+          });
 
-      changeForm();
+          changeForm();
+        } else {
+          alert("Passwords don't match!");
+        }
+      } else {
+        alert("Please fill in all fields!");
+      }
     } catch (err) {
       console.log(err);
     }

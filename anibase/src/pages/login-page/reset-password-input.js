@@ -7,10 +7,12 @@ export default function PasswordResetPage() {
   const idObj = useParams("encrypted");
   const idObj2 = useParams("iv");
   return (
-    <PasswordForm
-      label="Reset Password"
-      encrypted={idObj.encrypted}
-      iv={idObj2.iv}
-    />
+    <div className="login-container">
+      <PasswordForm
+        label="Reset Password"
+        encrypted={idObj.encrypted}
+        iv={idObj2.iv}
+      />
+    </div>
   );
 }

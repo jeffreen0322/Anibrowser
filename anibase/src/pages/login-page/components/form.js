@@ -110,7 +110,7 @@ export const Form = ({ label }) => {
         email: formData.email,
       });
 
-      if (Object.keys(response.data).length !== 0) {
+      if (formData.email.length > 0) {
         if (response.data.email === formData.email) {
           await axios.post("http://localhost:5000/send-email-password", {
             email: formData.email,
@@ -191,7 +191,16 @@ export const Form = ({ label }) => {
             ></input>
           </>
         ) : null}
-        <input className="input-submit" type="submit" value={label}></input>
+
+        <input
+          className="input-submit"
+          type="submit"
+          value={
+            label === "Sign Up" || label === "Log In"
+              ? label
+              : "Request new password"
+          }
+        ></input>
       </form>
       {label === "Log In" ? (
         <div>
