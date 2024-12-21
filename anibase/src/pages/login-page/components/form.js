@@ -33,13 +33,46 @@ export const Form = ({ label }) => {
   // Contacting the backend
   const handleAccountCreation = async () => {
     try {
-      await axios.post("http://localhost:5000/add", {
-        email: formData.email,
-        username: formData.username,
-        password: formData.password,
+      const address = await axios.post("http://localhost:5000/validate-email", {
+        address: formData.email,
       });
 
-      changeForm();
+      const user = await axios.post("http://localhost:5000/validate-username", {
+        user: formData.username,
+      });
+
+      const emailValid = address.data.length < 1 ? true : false;
+      const userValid = user.data.length < 1 ? true : false;
+
+      if (
+        emailValid &&
+        userValid &&
+        formData.email.length > 0 &&
+        formData.password.length > 0 &&
+        formData.username.length > 0
+      ) {
+        await axios.post("http://localhost:5000/add", {
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        });
+
+        changeForm();
+      } else {
+        if (
+          formData.email.length === 0 ||
+          formData.username.length === 0 ||
+          formData.password.length === 0
+        ) {
+          alert("Please fill in all fields!");
+        } else if (!emailValid && !userValid) {
+          alert("Email and username already taken");
+        } else if (!emailValid && userValid) {
+          alert("Email already taken");
+        } else {
+          alert("Username already taken");
+        }
+      }
     } catch (err) {
       console.log(err);
     }

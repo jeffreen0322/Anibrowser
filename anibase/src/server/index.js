@@ -52,6 +52,36 @@ const transporter = nodemailer.createTransport({
 
 /* Account Creation and Log */
 
+// Check for the availability of the email.
+app.post("/validate-email", async (req, res) => {
+  try {
+    const { address } = req.body;
+
+    const account = await pool.query(
+      "SELECT email FROM account WHERE email = $1",
+      [address]
+    );
+    res.json(account.rows[0]);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+// Check for the availability of the username.
+app.post("/validate-username", async (req, res) => {
+  try {
+    const { user } = req.body;
+
+    const account = await pool.query(
+      "SELECT username FROM account WHERE username = $1",
+      [user]
+    );
+    res.json(account.rows[0]);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 // Sign up.
 app.post("/add", async (req, res) => {
   try {
