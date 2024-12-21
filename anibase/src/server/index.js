@@ -182,4 +182,21 @@ app.post("/password-reset", async (req, res) => {
 
 // delete an account
 
+/* Anime Modification */
+// Adding anime into the user database.
+app.post("/add-anime-entry", async (req, res) => {
+  const { id, name, image_url, url } = req.body;
+
+  try {
+    const newAnimeEntry = await pool.query(
+      "INSERT INTO anime (ani_id, name, image_url, url) VALUES ($1, $2, $3, $4) RETURNING * ",
+      [id, name, image_url, url]
+    );
+
+    res.json(newAnimeEntry.rows[0]);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
 app.listen(5000, () => console.log("Server has started on port 5000"));

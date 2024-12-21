@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./animeEntry.css";
@@ -14,11 +15,28 @@ export default function AnimeEntry({
 }) {
   const navigate = useNavigate();
   const handleRedirect = (path) => {
+    handleAddAnime();
     navigate(path);
     window.location.reload();
   };
 
   const typeObj = useParams("type");
+
+  // Instantly adds the anime into the database upon arrival to website.
+  const handleAddAnime = async () => {
+    try {
+      await axios.post("http://localhost:5000/add-anime-entry", {
+        id: id,
+        name: title,
+        image_url: image,
+        url: `${window.location.origin}/${
+          typeObj.type === undefined ? "anime" : typeObj.type
+        }/${id}`,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Link
