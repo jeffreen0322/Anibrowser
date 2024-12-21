@@ -33,13 +33,13 @@ export const Form = ({ label }) => {
   // Contacting the backend
   const handleAccountCreation = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/add", {
+      await axios.post("http://localhost:5000/add", {
         email: formData.email,
         username: formData.username,
         password: formData.password,
       });
 
-      window.location.href = "/login";
+      changeForm();
     } catch (err) {
       console.log(err);
     }
@@ -59,7 +59,7 @@ export const Form = ({ label }) => {
           response.data.password === formData.password
         ) {
           login(response.data.username, response.data.email);
-          window.location.href = "/";
+          swap("/", { replace: true });
         } else {
           alert("Username or password is incorrect.");
         }
