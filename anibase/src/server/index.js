@@ -88,13 +88,12 @@ app.post("/add", async (req, res) => {
     // Destructure the required fields from the request body
     const { email, username, password } = req.body;
 
-    // Insert into the account table
     const newAccount = await pool.query(
       "INSERT INTO account (email, username, password) VALUES ($1, $2, $3) RETURNING * ",
       [email, username, password]
     );
 
-    // Respond with the created user
+    // respond with created user.
     res.json(newAccount.rows[0]);
   } catch (err) {
     console.error(err.message);
@@ -121,7 +120,7 @@ app.post("/login", async (req, res) => {
 
 /* Updating Account */
 
-// Confirm email
+// When client requests for new password, an email must be provided.
 app.post("/confirm-email", async (req, res) => {
   const { email } = req.body;
 
@@ -136,9 +135,9 @@ app.post("/confirm-email", async (req, res) => {
   }
 });
 
+// The email for password request is sent to the user.
 app.post("/send-email-password", async (req, res) => {
   const { email } = req.body;
-  console.log(email);
   const { encryptedData, iv } = encryptEmail(email);
 
   // Remember to change the resetLink in production.
@@ -160,7 +159,7 @@ app.post("/send-email-password", async (req, res) => {
   }
 });
 
-// Resetting password.
+// User is able to reset the password.
 app.post("/password-reset", async (req, res) => {
   const { email, iv, password } = req.body;
 
