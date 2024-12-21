@@ -18,8 +18,8 @@ export const Form = ({ label }) => {
     swap(`${label === "Log In" ? "/signup" : "/login"}`, { replace: true });
   };
 
-  const retrievePassword = () => {
-    swap("/password/reset", { replace: true });
+  const redirectPasswordChange = () => {
+    swap("/reset/password", { replace: true });
   };
 
   const handleChange = (e) => {
@@ -45,7 +45,7 @@ export const Form = ({ label }) => {
     }
   };
 
-  const handleLogin = async (e) => {
+  const handleLogin = async () => {
     try {
       const response = await axios.post("http://localhost:5000/login", {
         email: formData.email,
@@ -71,6 +71,28 @@ export const Form = ({ label }) => {
     }
   };
 
+  const sendEmail = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/confirm-email", {
+        email: formData.email,
+      });
+
+      if (Object.keys(response.data).length !== 0) {
+        if (response.data.email === formData.email) {
+          await axios.post("http://localhost:5000/send-email-password", {
+            email: formData.email,
+          });
+        } else {
+          alert("No account with provided email found");
+        }
+      } else {
+        alert("Please provide an email address");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="form-container">
       <h1>{label}</h1>
@@ -81,8 +103,10 @@ export const Form = ({ label }) => {
           e.preventDefault();
           if (label === "Sign Up") {
             handleAccountCreation();
-          } else {
+          } else if (label === "Log In") {
             handleLogin();
+          } else {
+            sendEmail();
           }
         }}
       >
@@ -98,29 +122,51 @@ export const Form = ({ label }) => {
             ></input>
           </>
         ) : null}
-        <label>Username</label>
-        <input
-          className="input-txt"
-          placeholder="Enter username"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-        ></input>
-        <label>Password</label>
-        <input
-          className="input-txt"
-          placeholder="Enter password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-        ></input>
+
+        {label !== "Reset Password" ? (
+          <>
+            <label>Username</label>
+            <input
+              className="input-txt"
+              placeholder="Enter username"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+            ></input>
+          </>
+        ) : (
+          <>
+            <label>Email</label>
+            <input
+              className="input-txt"
+              placeholder="Enter your email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            ></input>
+          </>
+        )}
+        {label !== "Reset Password" ? (
+          <>
+            <label>Password</label>
+            <input
+              className="input-txt"
+              placeholder="Enter password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            ></input>
+          </>
+        ) : null}
         <input className="input-submit" type="submit" value={label}></input>
       </form>
       {label === "Log In" ? (
         <div>
           <hr></hr>
           <div className="reg-recovery">
-            <p className="lost-pw">Forgot Password?</p>
+            <p className="lost-pw" onClick={redirectPasswordChange}>
+              Forgot Password?
+            </p>
             <p>
               Don't have an account? {""}
               <span className="alt" onClick={changeForm}>

@@ -20,6 +20,8 @@ import LoginPage from "./pages/login-page/login";
 import SignupPage from "./pages/login-page/signup";
 import Footer from "./components/footer/footer";
 import UpChevron from "./components/redirect/up/up";
+import PasswordReset from "./pages/login-page/password-reset";
+import PasswordResetPage from "./pages/login-page/reset-password-input";
 
 export default function App() {
   const [accounts, setAccounts] = useState([]);
@@ -60,6 +62,11 @@ export default function App() {
           />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/reset/password" element={<PasswordReset />} />
+          <Route
+            path="/reset/password/form/:encrypted/:iv"
+            element={<PasswordResetPage />}
+          />
         </Routes>
         <UpChevron id="navigation" />
         <Footer />
