@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
+import "./add-entry.css";
 
-export const AddEntry = ({ anime }) => {
+export const AddEntry = () => {
   const [selectedValue, setSelectedValue] = useState("");
 
   const handleChange = (event) => {
@@ -17,6 +18,7 @@ export const AddEntry = ({ anime }) => {
       <select
         name="status"
         id="watch-status"
+        className="dropdown"
         value={selectedValue}
         onChange={handleChange}
       >

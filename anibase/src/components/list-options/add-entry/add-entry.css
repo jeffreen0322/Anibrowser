@@ -1,4 +1,4 @@
-#char-display {
+.dropdown {
   background-color: #162e54;
   color: whitesmoke;
   margin-left: 1rem;
@@ -7,8 +7,4 @@
   font-style: bold;
   width: 169px;
   border-color: #4167c6;
-}
-
-#char-display:hover {
-  box-shadow: 0 0 20px 5px rgba(52, 152, 219, 0.7);
 }
