@@ -91,7 +91,23 @@ export const Form = ({ label }) => {
           response.data.username === formData.username &&
           response.data.password === formData.password
         ) {
-          login(response.data.username, response.data.email);
+          const response = await axios.post("http://localhost:5000/login", {
+            email: formData.email,
+            username: formData.username,
+            password: formData.password,
+          });
+
+          const acc = await axios.get("http://localhost:5000/retrieve", {
+            params: {
+              username: response.data.username,
+            },
+          });
+
+          login(
+            response.data.username,
+            response.data.email,
+            acc.data.account_id
+          );
           swap("/", { replace: true });
         } else {
           alert("Username or password is incorrect.");

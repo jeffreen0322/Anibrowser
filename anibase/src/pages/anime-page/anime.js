@@ -54,7 +54,7 @@ export default function AnimePage() {
     <div className="ani-container">
       <AnimeGeneral anime={anime} />
       <div className="anime-options">
-        <AddEntry />
+        <AddEntry anime={anime} />
         <CharacterDisplayButton list={characters} />
       </div>
       <RecommendedAnime id={idObj.id} limit={{ entries: 15 }} />

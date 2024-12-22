@@ -179,11 +179,27 @@ app.post("/password-reset", async (req, res) => {
 // get all accounts
 
 // get an account
+// Retrieve the account specific user.
+app.get("/retrieve", async (req, res) => {
+  try {
+    const { username } = req.query; // Get username from query parameters
+
+    const newAccount = await pool.query(
+      "SELECT * FROM account WHERE username = $1",
+      [username]
+    );
+
+    res.json(newAccount.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
 
 // delete an account
 
 /* Anime Modification */
-// Adding anime into the user database.
+// Adding anime into the database.
 app.post("/add-anime-entry", async (req, res) => {
   const { id, name, image_url, url } = req.body;
 
@@ -196,6 +212,59 @@ app.post("/add-anime-entry", async (req, res) => {
     res.json(newAnimeEntry.rows[0]);
   } catch (err) {
     console.log(err.message);
+  }
+});
+
+// Defining a relationship of the anime to the user.
+app.post("/add-anime-user", async (req, res) => {
+  const { user_id, ani_id, status, rating } = req.body;
+
+  try {
+    const newAnimeEntry = await pool.query(
+      "INSERT INTO user_anime (user_id, ani_id, status, rating) VALUES ($1, $2, $3, $4) RETURNING * ",
+      [user_id, ani_id, status, rating]
+    );
+
+    res.json(newAnimeEntry.rows[0]);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+// Updating the status of anime-user relation.
+app.post("/update-anime-user", async (req, res) => {
+  const { user_id, ani_id, status } = req.body;
+
+  try {
+    const updatedAnimeEntry = await pool.query(
+      "UPDATE user_anime SET status = $1 WHERE user_id = $2 AND ani_id = $3",
+      [status, user_id, ani_id]
+    );
+
+    res.json(updatedAnimeEntry.rows[0]);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+// Fetching the anime-user relationship
+app.get("/get-anime-user", async (req, res) => {
+  const { user_id, ani_id } = req.query; // Use req.query for GET requests
+
+  try {
+    const updatedAnimeEntry = await pool.query(
+      "SELECT * FROM user_anime WHERE user_id = $1 AND ani_id = $2",
+      [parseInt(user_id), parseInt(ani_id)]
+    );
+
+    if (updatedAnimeEntry.rows.length > 0) {
+      res.json(updatedAnimeEntry.rows[0]);
+    } else {
+      res.json({ message: "No relationship found" });
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Server error" });
   }
 });
 

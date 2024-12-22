@@ -20,19 +20,25 @@ export const AuthProvider = ({ children }) => {
     return localStorage.getItem("email") || ""; // Retrieve email from localStorage if it exists
   });
 
+  const [account_id, setId] = useState(() => {
+    return localStorage.getItem("account_id") || ""; // Retrieve id from localStorage if it exists
+  });
+
   useEffect(() => {
     // Persist login state and username in localStorage
     localStorage.setItem("loggedIn", loggedIn ? "true" : "false");
     if (loggedIn) {
       localStorage.setItem("username", username);
       localStorage.setItem("email", email);
+      localStorage.setItem("account_id", account_id);
     }
-  }, [loggedIn, username, email]);
+  }, [loggedIn, username, email, account_id]);
 
-  const login = (user, address) => {
+  const login = (user, address, account_id) => {
     setLoggedIn(true);
     setUsername(user);
     setEmail(address);
+    setId(account_id);
   };
 
   const logout = () => {
@@ -42,10 +48,13 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("loggedIn");
     localStorage.removeItem("username");
     localStorage.removeItem("email");
+    localStorage.removeItem("account_id");
   };
 
   return (
-    <AuthContext.Provider value={{ loggedIn, username, email, login, logout }}>
+    <AuthContext.Provider
+      value={{ loggedIn, username, email, account_id, login, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

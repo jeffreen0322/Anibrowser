@@ -6,7 +6,7 @@ import "./navbar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Navbar() {
-  const { loggedIn, username, logout } = useAuth();
+  const { loggedIn, logout } = useAuth();
   const [searchQuery, setSearchQuery] = useState("");
   const [filterOption, setFilterOption] = useState("");
   const navigate = useNavigate();
