@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AddEntry } from "../../components/list-options/add-entry/add-entry";
+import { useAuth } from "../../components/authentication/auth-context";
 import AnimeGeneral from "../../components/anime-info/anime-general";
 import RecommendedAnime from "../../components/recommended/recommended";
 import CharacterDisplayButton from "../../components/display/character/character-display";
@@ -54,7 +55,7 @@ export default function AnimePage() {
     <div className="ani-container">
       <AnimeGeneral anime={anime} />
       <div className="anime-options">
-        <AddEntry anime={anime} />
+        {typeObj.type === "anime" ? <AddEntry anime={anime} /> : null}
         <CharacterDisplayButton list={characters} />
       </div>
       <RecommendedAnime id={idObj.id} limit={{ entries: 15 }} />

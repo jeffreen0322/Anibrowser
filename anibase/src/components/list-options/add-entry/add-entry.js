@@ -1,21 +1,34 @@
 import axios from "axios";
 import { useAuth } from "../../authentication/auth-context";
+import { useNavigate } from "react-router-dom";
 import "./add-entry.css";
 
 export const AddEntry = ({ anime }) => {
-  const { account_id } = useAuth();
+  const { loggedIn, account_id } = useAuth();
+  const pathname = window.location.pathname;
+  const search = window.location.search;
+  const localUrl = pathname + search;
+
+  const swap = useNavigate();
 
   const handleChange = async (event) => {
-    const newValue = event.target.value;
+    if (loggedIn) {
+      const newValue = event.target.value;
 
-    const existingRelationship = await retrieveUserAnimeRelationship();
+      const existingRelationship = await retrieveUserAnimeRelationship();
 
-    if (newValue !== "status-empty") {
-      if (existingRelationship) {
-        handleUpdateUserAnime(newValue);
-      } else {
-        handleAddUserAnime(newValue);
+      if (newValue !== "status-empty") {
+        if (existingRelationship) {
+          handleUpdateUserAnime(newValue);
+        } else {
+          handleAddUserAnime(newValue);
+        }
       }
+    } else {
+      swap("/login", {
+        state: { redirectURL: localUrl },
+        replace: true,
+      });
     }
   };
 
@@ -28,7 +41,6 @@ export const AddEntry = ({ anime }) => {
         },
       });
 
-      console.log("Response received:", response.data);
       if (response.data && response.data.user_id) {
         return response.data; // Relationship exists
       }
@@ -41,17 +53,12 @@ export const AddEntry = ({ anime }) => {
 
   const handleAddUserAnime = async (value) => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/add-anime-user",
-        {
-          user_id: account_id,
-          ani_id: anime.mal_id,
-          status: value,
-          rating: 0,
-        }
-      );
-
-      console.log("Anime added successfully:", response.data);
+      await axios.post("http://localhost:5000/add-anime-user", {
+        user_id: account_id,
+        ani_id: anime.mal_id,
+        status: value,
+        rating: 0,
+      });
     } catch (error) {
       console.error("Error adding user anime:", error);
     }
@@ -59,16 +66,11 @@ export const AddEntry = ({ anime }) => {
 
   const handleUpdateUserAnime = async (value) => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/update-anime-user",
-        {
-          user_id: account_id,
-          ani_id: anime.mal_id,
-          status: value,
-        }
-      );
-
-      console.log("Anime updated successfully:", response.data);
+      await axios.post("http://localhost:5000/update-anime-user", {
+        user_id: account_id,
+        ani_id: anime.mal_id,
+        status: value,
+      });
     } catch (error) {
       console.error("Error updating user anime:", error);
     }

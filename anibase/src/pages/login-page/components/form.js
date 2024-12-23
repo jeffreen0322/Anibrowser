@@ -5,7 +5,7 @@ import { useAuth } from "../../../components/authentication/auth-context";
 import { useNavigate } from "react-router-dom";
 import "./form.css";
 
-export const Form = ({ label }) => {
+export const Form = ({ label, redirect }) => {
   const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
@@ -15,7 +15,10 @@ export const Form = ({ label }) => {
 
   const swap = useNavigate();
   const changeForm = () => {
-    swap(`${label === "Log In" ? "/signup" : "/login"}`, { replace: true });
+    swap(`${label === "Log In" ? "/signup" : "/login"}`, {
+      state: { redirectURL: redirect },
+      replace: true,
+    });
   };
 
   const redirectPasswordChange = () => {
@@ -108,7 +111,8 @@ export const Form = ({ label }) => {
             response.data.email,
             acc.data.account_id
           );
-          swap("/", { replace: true });
+
+          swap(redirect, { replace: true });
         } else {
           alert("Username or password is incorrect.");
         }
