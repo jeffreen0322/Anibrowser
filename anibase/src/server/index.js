@@ -110,7 +110,7 @@ app.post("/login", async (req, res) => {
       [username]
     );
 
-    console.log("Query result:", result.rows[0]);
+    // console.log("Query result:", result.rows[0]);
 
     res.json(result.rows[0]);
   } catch (err) {
@@ -262,6 +262,23 @@ app.get("/get-anime-user", async (req, res) => {
     } else {
       res.json({ message: "No relationship found" });
     }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// Getting the animes associated with the profile.
+app.get("/get-full-anime-user", async (req, res) => {
+  const { user_id } = req.query;
+
+  try {
+    const updatedAnimeEntry = await pool.query(
+      "SELECT a.id, a.ani_id, a.name, a.image_url, ua.status, ua.rating FROM anime a JOIN user_anime ua ON a.ani_id = ua.ani_id WHERE ua.user_id = $1",
+      [parseInt(user_id)]
+    );
+
+    res.json(updatedAnimeEntry.rows);
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ error: "Server error" });

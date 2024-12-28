@@ -22,6 +22,7 @@ import Footer from "./components/footer/footer";
 import UpChevron from "./components/redirect/up/up";
 import PasswordReset from "./pages/login-page/password-reset";
 import PasswordResetPage from "./pages/login-page/reset-password-input";
+import UserListPage from "./pages/user-list/user-list";
 
 export default function App() {
   const [accounts, setAccounts] = useState([]);
@@ -67,6 +68,8 @@ export default function App() {
             path="/reset/password/form/:encrypted/:iv"
             element={<PasswordResetPage />}
           />
+
+          <Route path="/my-list/anime" element={<UserListPage />} />
         </Routes>
         <UpChevron id="navigation" />
         <Footer />

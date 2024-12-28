@@ -2,13 +2,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* background-color: #162e54; */
   padding: 5rem;
   width: 475px;
   gap: 1rem;
   border-radius: 10px;
   background: linear-gradient(110deg, #112341 45%, #1f3e6e 75%);
-  /* box-shadow: 0 0 20px 5px rgba(52, 152, 219, 0.5); */
 }
 
 .form-container h1,

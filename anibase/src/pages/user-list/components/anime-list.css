@@ -1,0 +1,33 @@
+.list {
+  list-style-type: none;
+  list-style-position: inside;
+  margin-left: -4em;
+}
+
+.anime-container {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  background: linear-gradient(110deg, #112341 45%, #1f3e6e 75%);
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.anime-container img {
+  height: 90px;
+}
+
+#title {
+  font-weight: bold;
+}
+
+@media (max-width: 400px) {
+  .anime-container {
+    padding: 0.5rem;
+  }
+}

@@ -106,11 +106,22 @@ function Navbar() {
                 </li>
               </>
             ) : (
-              <li className="nav-item" onClick={logout}>
-                <a className="nav-link active link" id="logOut" href="/">
-                  Log out
-                </a>
-              </li>
+              <>
+                <li>
+                  <a
+                    className="nav-link active link"
+                    id="my-list"
+                    href="/my-list/anime"
+                  >
+                    My List
+                  </a>
+                </li>
+                <li className="nav-item" onClick={logout}>
+                  <a className="nav-link active link" id="logOut" href="/">
+                    Log out
+                  </a>
+                </li>
+              </>
             )}
           </ul>
           <form className="d-flex" onSubmit={handleGenreSubmit}>
