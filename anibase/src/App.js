@@ -25,22 +25,6 @@ import PasswordResetPage from "./pages/login-page/reset-password-input";
 import UserListPage from "./pages/user-list/user-list";
 
 export default function App() {
-  const [accounts, setAccounts] = useState([]);
-
-  useEffect(() => {
-    fetchAccounts();
-  }, []);
-
-  async function fetchAccounts() {
-    let { data: accounts, error } = await supabase.from("accounts").select("*");
-
-    if (error) {
-      console.log("Error fetching accounts.");
-    } else {
-      console.log(accounts);
-    }
-  }
-
   return (
     <AuthProvider>
       <Router>

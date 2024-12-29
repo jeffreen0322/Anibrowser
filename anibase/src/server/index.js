@@ -217,12 +217,12 @@ app.post("/add-anime-entry", async (req, res) => {
 
 // Defining a relationship of the anime to the user.
 app.post("/add-anime-user", async (req, res) => {
-  const { user_id, ani_id, status, rating } = req.body;
+  const { user_id, ani_id, status } = req.body;
 
   try {
     const newAnimeEntry = await pool.query(
-      "INSERT INTO user_anime (user_id, ani_id, status, rating) VALUES ($1, $2, $3, $4) RETURNING * ",
-      [user_id, ani_id, status, rating]
+      "INSERT INTO user_anime (user_id, ani_id, status) VALUES ($1, $2, $3) RETURNING * ",
+      [user_id, ani_id, status]
     );
 
     res.json(newAnimeEntry.rows[0]);
@@ -239,6 +239,22 @@ app.post("/update-anime-user", async (req, res) => {
     const updatedAnimeEntry = await pool.query(
       "UPDATE user_anime SET status = $1 WHERE user_id = $2 AND ani_id = $3",
       [status, user_id, ani_id]
+    );
+
+    res.json(updatedAnimeEntry.rows[0]);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+// Updating the rating of anime-user relation.
+app.post("/update-rating-anime", async (req, res) => {
+  const { user_id, ani_id, rating } = req.body;
+
+  try {
+    const updatedAnimeEntry = await pool.query(
+      "UPDATE user_anime SET rating = $1 WHERE user_id = $2 AND ani_id = $3",
+      [rating, user_id, ani_id]
     );
 
     res.json(updatedAnimeEntry.rows[0]);

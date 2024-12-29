@@ -32,6 +32,25 @@ export const AddEntry = ({ anime }) => {
     }
   };
 
+  const handleRatingChange = async (event) => {
+    if (loggedIn) {
+      const newRating = event.target.value;
+      const existingRelationship = await retrieveUserAnimeRelationship();
+      if (newRating !== "rating-default") {
+        if (existingRelationship) {
+          handleUpdateAnimeRating(newRating);
+        } else {
+          alert("Provide a watch status before rating!");
+        }
+      }
+    } else {
+      swap("/login", {
+        state: { redirectURL: localUrl },
+        replace: true,
+      });
+    }
+  };
+
   const retrieveUserAnimeRelationship = async () => {
     try {
       const response = await axios.get("http://localhost:5000/get-anime-user", {
@@ -57,7 +76,6 @@ export const AddEntry = ({ anime }) => {
         user_id: account_id,
         ani_id: anime.mal_id,
         status: value,
-        rating: 0,
       });
     } catch (error) {
       console.error("Error adding user anime:", error);
@@ -76,6 +94,18 @@ export const AddEntry = ({ anime }) => {
     }
   };
 
+  const handleUpdateAnimeRating = async (value) => {
+    try {
+      await axios.post("http://localhost:5000/update-rating-anime", {
+        user_id: account_id,
+        ani_id: anime.mal_id,
+        rating: value,
+      });
+    } catch (error) {
+      console.error("Error updating anime rating:", error);
+    }
+  };
+
   return (
     <div className="add-container">
       <select
@@ -88,6 +118,27 @@ export const AddEntry = ({ anime }) => {
         <option value="watching">Watching</option>
         <option value="completed">Completed</option>
       </select>
+
+      {loggedIn ? (
+        <select
+          name="rating"
+          id="watch-rating"
+          className="dropdown"
+          onChange={handleRatingChange}
+        >
+          <option value="rating-default">Your rating</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      ) : null}
     </div>
   );
 };

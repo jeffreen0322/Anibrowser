@@ -26,6 +26,7 @@ export const AnimeTable = ({ userId }) => {
     if (userId) {
       retrieveAnimes();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
   // Render the component
@@ -40,6 +41,7 @@ export const AnimeTable = ({ userId }) => {
               <p id="status">
                 {anime.status.slice(0, 1).toUpperCase() + anime.status.slice(1)}
               </p>
+              <p>{!anime.rating ? "N/A" : anime.rating}</p>
             </Link>
           </li> // Use a unique key for each list item
         ))

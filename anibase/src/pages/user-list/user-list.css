@@ -1,6 +1,4 @@
 .user-anime-list {
   margin: 1rem;
   padding: 1rem;
-  /*Could cause issues*/
-  height: 100vh;
 }
