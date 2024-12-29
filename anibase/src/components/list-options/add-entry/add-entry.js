@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../../authentication/auth-context";
 import { useNavigate } from "react-router-dom";
@@ -9,15 +11,55 @@ export const AddEntry = ({ anime }) => {
   const search = window.location.search;
   const localUrl = pathname + search;
 
+  const [status, setStatus] = useState("status-empty"); // Default status
+  const [rating, setRating] = useState("rating-default"); // Default rating
   const swap = useNavigate();
+
+  // Fetch user-anime relationship on component mount
+  useEffect(() => {
+    const fetchUserAnimeRelationship = async () => {
+      if (loggedIn) {
+        const relationship = await retrieveUserAnimeRelationship();
+        if (relationship) {
+          setStatus(relationship.status || "status-empty");
+          setRating(
+            relationship.rating
+              ? relationship.rating.toString()
+              : "rating-default"
+          );
+        }
+      }
+    };
+    fetchUserAnimeRelationship();
+  }, [loggedIn, anime.mal_id]);
+
+  const retrieveUserAnimeRelationship = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/get-anime-user", {
+        params: {
+          user_id: account_id,
+          ani_id: anime.mal_id,
+        },
+      });
+
+      if (response.data && response.data.user_id) {
+        return response.data;
+      }
+      return null;
+    } catch (error) {
+      console.error("Error retrieving user-anime relationship:", error);
+      return null;
+    }
+  };
 
   const handleChange = async (event) => {
     if (loggedIn) {
       const newValue = event.target.value;
 
-      const existingRelationship = await retrieveUserAnimeRelationship();
-
       if (newValue !== "status-empty") {
+        setStatus(newValue);
+        const existingRelationship = await retrieveUserAnimeRelationship();
+
         if (existingRelationship) {
           handleUpdateUserAnime(newValue);
         } else {
@@ -35,8 +77,11 @@ export const AddEntry = ({ anime }) => {
   const handleRatingChange = async (event) => {
     if (loggedIn) {
       const newRating = event.target.value;
-      const existingRelationship = await retrieveUserAnimeRelationship();
+
       if (newRating !== "rating-default") {
+        setRating(newRating);
+        const existingRelationship = await retrieveUserAnimeRelationship();
+
         if (existingRelationship) {
           handleUpdateAnimeRating(newRating);
         } else {
@@ -48,25 +93,6 @@ export const AddEntry = ({ anime }) => {
         state: { redirectURL: localUrl },
         replace: true,
       });
-    }
-  };
-
-  const retrieveUserAnimeRelationship = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/get-anime-user", {
-        params: {
-          user_id: account_id,
-          ani_id: anime.mal_id,
-        },
-      });
-
-      if (response.data && response.data.user_id) {
-        return response.data; // Relationship exists
-      }
-      return null; // No relationship
-    } catch (error) {
-      console.error("Error retrieving user-anime relationship:", error);
-      return null;
     }
   };
 
@@ -112,6 +138,7 @@ export const AddEntry = ({ anime }) => {
         name="status"
         id="watch-status"
         className="dropdown"
+        value={status} // Bind to state
         onChange={handleChange}
       >
         <option value="status-empty">Your status</option>
@@ -124,6 +151,7 @@ export const AddEntry = ({ anime }) => {
           name="rating"
           id="watch-rating"
           className="dropdown"
+          value={rating}
           onChange={handleRatingChange}
         >
           <option value="rating-default">Your rating</option>
