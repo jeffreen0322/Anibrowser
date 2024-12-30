@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./form.css";
 
 export const PasswordForm = ({ label, encrypted, iv }) => {
+  const SERVER = "https://anibrowser-server.vercel.app";
   const [formData, setFormData] = useState({
     password: "",
     passwordRetype: "",
@@ -28,7 +29,7 @@ export const PasswordForm = ({ label, encrypted, iv }) => {
     try {
       if (formData.password.length > 0 && formData.passwordRetype.length > 0) {
         if (formData.password === formData.passwordRetype) {
-          await axios.post("http://localhost:5000/password-reset", {
+          await axios.post(`${SERVER}/password-reset`, {
             email: encrypted,
             iv: iv,
             password: formData.password,

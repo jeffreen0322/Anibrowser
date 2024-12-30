@@ -141,7 +141,7 @@ app.post("/send-email-password", async (req, res) => {
   const { encryptedData, iv } = encryptEmail(email);
 
   // Remember to change the resetLink in production.
-  const resetLink = `localhost:3000/reset/password/form/${encryptedData}/${iv}`;
+  const resetLink = `https://anibrowser-server.vercel.app/reset/password/form/${encryptedData}/${iv}`;
 
   const mailOptions = {
     from: "jeffreyenguyen@gmail.com",

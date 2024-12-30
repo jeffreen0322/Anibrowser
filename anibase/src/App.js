@@ -1,12 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { supabase } from "./components/supabase/client";
 import { Analytics } from "@vercel/analytics/react";
 import { AuthProvider } from "./components/authentication/auth-context";
-import "./index.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Navbar from "./navbar";
 import TopPage from "./pages/top/top";
 import HomePage from "./pages/home/home";
@@ -23,6 +18,9 @@ import UpChevron from "./components/redirect/up/up";
 import PasswordReset from "./pages/login-page/password-reset";
 import PasswordResetPage from "./pages/login-page/reset-password-input";
 import UserListPage from "./pages/user-list/user-list";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 export default function App() {
   return (

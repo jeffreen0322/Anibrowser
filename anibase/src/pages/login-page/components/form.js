@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "./form.css";
 
 export const Form = ({ label, redirect }) => {
+  const SERVER = "https://anibrowser-server.vercel.app";
   const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
@@ -36,11 +37,11 @@ export const Form = ({ label, redirect }) => {
   // Contacting the backend
   const handleAccountCreation = async () => {
     try {
-      const address = await axios.post("http://localhost:5000/validate-email", {
+      const address = await axios.post(`${SERVER}/validate-email`, {
         address: formData.email,
       });
 
-      const user = await axios.post("http://localhost:5000/validate-username", {
+      const user = await axios.post(`${SERVER}/validate-username`, {
         user: formData.username,
       });
 
@@ -54,7 +55,7 @@ export const Form = ({ label, redirect }) => {
         formData.password.length > 0 &&
         formData.username.length > 0
       ) {
-        await axios.post("http://localhost:5000/add", {
+        await axios.post(`${SERVER}/add`, {
           email: formData.email,
           username: formData.username,
           password: formData.password,
@@ -83,7 +84,7 @@ export const Form = ({ label, redirect }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/login", {
+      const response = await axios.post(`${SERVER}/login`, {
         email: formData.email,
         username: formData.username,
         password: formData.password,
@@ -94,13 +95,13 @@ export const Form = ({ label, redirect }) => {
           response.data.username === formData.username &&
           response.data.password === formData.password
         ) {
-          const response = await axios.post("http://localhost:5000/login", {
+          const response = await axios.post(`${SERVER}/login`, {
             email: formData.email,
             username: formData.username,
             password: formData.password,
           });
 
-          const acc = await axios.get("http://localhost:5000/retrieve", {
+          const acc = await axios.get(`${SERVER}/retrieve`, {
             params: {
               username: response.data.username,
             },
@@ -126,13 +127,13 @@ export const Form = ({ label, redirect }) => {
 
   const sendEmail = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/confirm-email", {
+      const response = await axios.post(`${SERVER}/confirm-email`, {
         email: formData.email,
       });
 
       if (formData.email.length > 0) {
         if (response.data.email === formData.email) {
-          await axios.post("http://localhost:5000/send-email-password", {
+          await axios.post(`${SERVER}/send-email-password`, {
             email: formData.email,
           });
         } else {

@@ -4,17 +4,15 @@ import "./anime-list.css";
 import axios from "axios";
 
 export const AnimeTable = ({ userId }) => {
+  const SERVER = "https://anibrowser-server.vercel.app";
   const [animeList, setAnimeList] = useState([]); // State to hold the anime data
 
   // Function to retrieve anime data
   const retrieveAnimes = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5000/get-full-anime-user",
-        {
-          params: { user_id: userId },
-        }
-      );
+      const response = await axios.get(`${SERVER}/get-full-anime-user`, {
+        params: { user_id: userId },
+      });
       setAnimeList(response.data); // Update state with the retrieved data
     } catch (err) {
       console.error(err);
