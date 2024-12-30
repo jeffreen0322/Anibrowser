@@ -1,0 +1,21 @@
+/* Ensure the layout container takes the full viewport height */
+.app-container {
+  display: flex;
+  flex-direction: column; /* Stack the Navbar, main content, and footer vertically */
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* The main content expands to push the footer down */
+.main-content {
+  flex: 1; /* This ensures the main content takes up the available space */
+}
+
+/* Footer styling */
+footer {
+  background-color: #222; /* Example footer background */
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+  z-index: 10;
+}

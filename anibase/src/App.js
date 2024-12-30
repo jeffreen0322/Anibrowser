@@ -19,6 +19,7 @@ import PasswordReset from "./pages/login-page/password-reset";
 import PasswordResetPage from "./pages/login-page/reset-password-input";
 import UserListPage from "./pages/user-list/user-list";
 import "./index.css";
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -26,35 +27,40 @@ export default function App() {
   return (
     <AuthProvider>
       <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/:type/top/:page" element={<TopPage />} />
-          <Route path="/:type/:id" element={<AnimePage />} />
-          <Route path="/:type/search/:id/:page/" element={<AnimeSearch />} />
-          <Route
-            path="/:type/genre-search/:genre/:page/"
-            element={<GenreSearch />}
-          />
-
-          <Route
-            path="/:type/:id/reccomendation/"
-            element={<ReccomendationPage />}
-          />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/reset/password" element={<PasswordReset />} />
-          <Route
-            path="/reset/password/form/:encrypted/:iv"
-            element={<PasswordResetPage />}
-          />
-
-          <Route path="/my-list/anime" element={<UserListPage />} />
-        </Routes>
-        <UpChevron id="navigation" />
-        <Footer />
+        <div className="app-container">
+          <Navbar />
+          <div className="main-content">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/:type/top/:page" element={<TopPage />} />
+              <Route path="/:type/:id" element={<AnimePage />} />
+              <Route
+                path="/:type/search/:id/:page/"
+                element={<AnimeSearch />}
+              />
+              <Route
+                path="/:type/genre-search/:genre/:page/"
+                element={<GenreSearch />}
+              />
+              <Route
+                path="/:type/:id/reccomendation/"
+                element={<ReccomendationPage />}
+              />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignupPage />} />
+              <Route path="/reset/password" element={<PasswordReset />} />
+              <Route
+                path="/reset/password/form/:encrypted/:iv"
+                element={<PasswordResetPage />}
+              />
+              <Route path="/my-list/anime" element={<UserListPage />} />
+            </Routes>
+          </div>
+          <UpChevron id="navigation" />
+          <Footer />
+        </div>
       </Router>
       <Analytics />
     </AuthProvider>
