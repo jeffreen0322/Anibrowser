@@ -13,6 +13,7 @@ export default function AnimeEntry({
   season,
   showEpisode,
 }) {
+  const SERVER = "https://anibrowser-server.vercel.app";
   const navigate = useNavigate();
   const handleRedirect = (path) => {
     handleAddAnime();
@@ -24,8 +25,9 @@ export default function AnimeEntry({
 
   // Instantly adds the anime into the database upon arrival to website.
   const handleAddAnime = async () => {
+    // alert(`id: ${id} title: ${title} "image: ${image}`);
     try {
-      await axios.post("http://localhost:5000/add-anime-entry", {
+      await axios.post(`${SERVER}/add-anime-entry`, {
         id: id,
         name: title,
         image_url: image,

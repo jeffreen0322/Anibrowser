@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "./add-entry.css";
 
 export const AddEntry = ({ anime }) => {
+  const SERVER = "https://anibrowser-server.vercel.app";
   const { loggedIn, account_id } = useAuth();
   const pathname = window.location.pathname;
   const search = window.location.search;
@@ -35,7 +36,7 @@ export const AddEntry = ({ anime }) => {
 
   const retrieveUserAnimeRelationship = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/get-anime-user", {
+      const response = await axios.get(`${SERVER}/get-anime-user`, {
         params: {
           user_id: account_id,
           ani_id: anime.mal_id,
@@ -98,7 +99,7 @@ export const AddEntry = ({ anime }) => {
 
   const handleAddUserAnime = async (value) => {
     try {
-      await axios.post("http://localhost:5000/add-anime-user", {
+      await axios.post(`${SERVER}/add-anime-user`, {
         user_id: account_id,
         ani_id: anime.mal_id,
         status: value,
@@ -110,7 +111,7 @@ export const AddEntry = ({ anime }) => {
 
   const handleUpdateUserAnime = async (value) => {
     try {
-      await axios.post("http://localhost:5000/update-anime-user", {
+      await axios.post(`${SERVER}update-anime-user`, {
         user_id: account_id,
         ani_id: anime.mal_id,
         status: value,
@@ -122,7 +123,7 @@ export const AddEntry = ({ anime }) => {
 
   const handleUpdateAnimeRating = async (value) => {
     try {
-      await axios.post("http://localhost:5000/update-rating-anime", {
+      await axios.post(`${SERVER}/update-rating-anime`, {
         user_id: account_id,
         ani_id: anime.mal_id,
         rating: value,
