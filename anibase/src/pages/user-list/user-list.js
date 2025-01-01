@@ -6,7 +6,7 @@ import Category from "../../components/named-header/category";
 import "./user-list.css";
 
 export default function UserListPage() {
-  const { account_id, loggedIn } = useAuth();
+  const { account_id, loggedIn, username } = useAuth();
   const navigate = useNavigate();
   const pathname = window.location.pathname;
   const search = window.location.search;
@@ -20,7 +20,7 @@ export default function UserListPage() {
 
   return (
     <div className="user-anime-list">
-      <Category name="Your Anime List" />
+      <Category name={`${username}'s List`} />
       <AnimeTable userId={account_id} />;
     </div>
   );
