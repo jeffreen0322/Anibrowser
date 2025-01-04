@@ -9,8 +9,6 @@ export default function PrivacyPage() {
     <div>
       <Category name="Privacy Policy" />
       <PrivacyPolicy />
-      <Footer />
-      <UpChevron id="navigation" />
     </div>
   );
 }
