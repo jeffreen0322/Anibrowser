@@ -4,8 +4,6 @@ import Category from "../../components/named-header/category";
 import Pagination from "../../components/pagination/pagination";
 import getUniqueEntries from "../../helpers/getUniqueEntries";
 import { useNavigate, useParams } from "react-router-dom";
-import Footer from "../../components/footer/footer";
-import UpChevron from "../../components/redirect/up/up";
 import "./anime-search.css";
 
 export default function AnimeSearch() {
@@ -22,8 +20,6 @@ export default function AnimeSearch() {
         page={idObj2.page}
         count={searchResults[1]}
       />
-      <Footer />
-      <UpChevron id="navigation" />
     </div>
   );
 }

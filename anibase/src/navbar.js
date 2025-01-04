@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./components/authentication/auth-context";
 import genreObj from "./data/genres";
 import "./navbar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Navbar() {
+  const { loggedIn, logout } = useAuth();
   const [searchQuery, setSearchQuery] = useState("");
   const [filterOption, setFilterOption] = useState("");
   const navigate = useNavigate();
@@ -86,6 +88,41 @@ function Navbar() {
                 Top Manga
               </a>
             </li>
+            {!loggedIn ? (
+              <>
+                <li className="nav-item">
+                  <a className="nav-link active link" id="logIn" href="/login">
+                    Log in
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link active link"
+                    id="signUp"
+                    href="/signup"
+                  >
+                    Sign up
+                  </a>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <a
+                    className="nav-link active link"
+                    id="my-list"
+                    href="/my-list/anime"
+                  >
+                    My List
+                  </a>
+                </li>
+                <li className="nav-item" onClick={logout}>
+                  <a className="nav-link active link" id="logOut" href="/">
+                    Log out
+                  </a>
+                </li>
+              </>
+            )}
           </ul>
           <form className="d-flex" onSubmit={handleGenreSubmit}>
             <select
@@ -110,7 +147,6 @@ function Navbar() {
                 fill="currentColor"
                 className="bi bi-search"
                 viewBox="0 0 16 16"
-                type="submit"
               >
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
               </svg>

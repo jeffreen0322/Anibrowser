@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { AddEntry } from "../../components/list-options/add-entry/add-entry";
 import AnimeGeneral from "../../components/anime-info/anime-general";
 import RecommendedAnime from "../../components/recommended/recommended";
 import CharacterDisplayButton from "../../components/display/character/character-display";
-import Footer from "../../components/footer/footer";
-import UpChevron from "../../components/redirect/up/up";
 import "./anime.css";
 
 export default function AnimePage() {
@@ -54,10 +53,11 @@ export default function AnimePage() {
   return (
     <div className="ani-container">
       <AnimeGeneral anime={anime} />
-      <CharacterDisplayButton list={characters} />
+      <div className="anime-options">
+        {typeObj.type === "anime" ? <AddEntry anime={anime} /> : null}
+        <CharacterDisplayButton list={characters} />
+      </div>
       <RecommendedAnime id={idObj.id} limit={{ entries: 15 }} />
-      <Footer />
-      <UpChevron id="navigation" />
     </div>
   );
 }

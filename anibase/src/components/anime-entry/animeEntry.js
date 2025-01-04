@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./animeEntry.css";
@@ -12,13 +13,32 @@ export default function AnimeEntry({
   season,
   showEpisode,
 }) {
+  const SERVER = "https://anibrowser-server.vercel.app";
   const navigate = useNavigate();
   const handleRedirect = (path) => {
+    handleAddAnime();
     navigate(path);
     window.location.reload();
   };
 
   const typeObj = useParams("type");
+
+  // Instantly adds the anime into the database upon arrival to website.
+  const handleAddAnime = async () => {
+    // alert(`id: ${id} title: ${title} "image: ${image}`);
+    try {
+      await axios.post(`${SERVER}/add-anime-entry`, {
+        id: id,
+        name: title,
+        image_url: image,
+        url: `${window.location.origin}/${
+          typeObj.type === undefined ? "anime" : typeObj.type
+        }/${id}`,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Link

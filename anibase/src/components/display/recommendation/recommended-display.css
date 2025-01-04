@@ -4,6 +4,7 @@
   align-self: center;
   justify-items: center;
   padding: 10px 20px;
+  border-color: #4167c6;
 }
 
 #recommendation-extend:hover {

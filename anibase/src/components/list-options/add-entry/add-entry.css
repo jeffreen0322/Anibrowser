@@ -1,0 +1,10 @@
+.dropdown {
+  background-color: #162e54;
+  color: whitesmoke;
+  margin-left: 1rem;
+  padding: 10px 20px;
+  opacity: 0.8;
+  font-style: bold;
+  width: 169px;
+  border-color: #4167c6;
+}
