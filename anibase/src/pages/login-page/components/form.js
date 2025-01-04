@@ -7,6 +7,8 @@ import "./form.css";
 
 export const Form = ({ label, redirect }) => {
   const SERVER = "https://anibrowser-server.vercel.app";
+  const valid = require("validator");
+
   const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
@@ -15,6 +17,11 @@ export const Form = ({ label, redirect }) => {
   });
 
   const swap = useNavigate();
+  const hasSpecialCharacters = (str) => {
+    const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/;
+    return regex.test(str);
+  };
+
   const changeForm = () => {
     swap(`${label === "Log In" ? "/signup" : "/login"}`, {
       state: { redirectURL: redirect },
@@ -36,6 +43,8 @@ export const Form = ({ label, redirect }) => {
 
   // Contacting the backend
   const handleAccountCreation = async () => {
+    const MAX_PASSWORD = 8;
+    const MAX_USERNAME = 6;
     try {
       const address = await axios.post(`${SERVER}/validate-email`, {
         address: formData.email,
@@ -55,6 +64,25 @@ export const Form = ({ label, redirect }) => {
         formData.password.length > 0 &&
         formData.username.length > 0
       ) {
+        if (!valid.isEmail(formData.email)) {
+          alert("Please provide a valid email address!");
+          return;
+        }
+        if (formData.username.length < MAX_USERNAME) {
+          alert(`Username must be at least ${MAX_USERNAME} characters long!`);
+          return;
+        }
+
+        if (
+          formData.password.length < MAX_PASSWORD ||
+          !hasSpecialCharacters(formData.password)
+        ) {
+          alert(
+            `Password must be at least ${MAX_PASSWORD} characters long and must contain at least one special character!`
+          );
+          return;
+        }
+
         await axios.post(`${SERVER}/add`, {
           email: formData.email,
           username: formData.username,
