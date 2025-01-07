@@ -14,6 +14,7 @@ export const Form = ({ label, redirect }) => {
     email: "",
     username: "",
     password: "",
+    retypePassword: "",
   });
 
   const swap = useNavigate();
@@ -62,6 +63,7 @@ export const Form = ({ label, redirect }) => {
         userValid &&
         formData.email.length > 0 &&
         formData.password.length > 0 &&
+        formData.retypePassword.length > 0 &&
         formData.username.length > 0
       ) {
         if (!valid.isEmail(formData.email)) {
@@ -80,6 +82,11 @@ export const Form = ({ label, redirect }) => {
           alert(
             `Password must be at least ${MAX_PASSWORD} characters long and must contain at least one special character!`
           );
+          return;
+        }
+
+        if (formData.retypePassword !== formData.password) {
+          alert("Passwords must match!");
           return;
         }
 
@@ -238,6 +245,18 @@ export const Form = ({ label, redirect }) => {
               value={formData.password}
               onChange={handleChange}
             ></input>
+            {label === "Sign Up" ? (
+              <>
+                <label>Confirm Password</label>
+                <input
+                  className="input-txt"
+                  placeholder="Re-type password"
+                  name="retypePassword"
+                  value={formData.retypePassword}
+                  onChange={handleChange}
+                ></input>
+              </>
+            ) : null}
           </>
         ) : null}
 
