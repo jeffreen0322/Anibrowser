@@ -18,10 +18,15 @@
   text-decoration: none;
 }
 
+.t-header {
+  margin: 0;
+}
+
 .anime-container img {
   height: 90px;
 }
 
+.t-header,
 #title {
   font-weight: bold;
 }
@@ -29,5 +34,11 @@
 @media (max-width: 400px) {
   .anime-container {
     padding: 0.5rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .descriptor {
+    font-size: small;
   }
 }
