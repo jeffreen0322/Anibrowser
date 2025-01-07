@@ -18,10 +18,15 @@
   text-decoration: none;
 }
 
+.t-header {
+  margin: 0;
+}
+
 .anime-container img {
   height: 90px;
 }
 
+.t-header,
 #title {
   font-weight: bold;
 }

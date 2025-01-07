@@ -30,6 +30,14 @@ export const AnimeTable = ({ userId }) => {
   // Render the component
   return (
     <ul className="list">
+      <li>
+        <div className="anime-container headers">
+          <p></p>
+          <p className="t-header">Title</p>
+          <p className="t-header">Status</p>
+          <p className="t-header">Rating</p>
+        </div>
+      </li>
       {animeList.length > 0 ? (
         animeList.map((anime, key) => (
           <li key={key}>
@@ -39,7 +47,7 @@ export const AnimeTable = ({ userId }) => {
               <p id="status">
                 {anime.status.slice(0, 1).toUpperCase() + anime.status.slice(1)}
               </p>
-              <p>{!anime.rating ? "N/A" : anime.rating}</p>
+              <p id="rating">{!anime.rating ? "N/A" : anime.rating}</p>
             </Link>
           </li> // Use a unique key for each list item
         ))
