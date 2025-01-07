@@ -43,11 +43,15 @@ export const AnimeTable = ({ userId }) => {
           <li key={key}>
             <Link className="anime-container" to={`/anime/${anime.ani_id}`}>
               <img src={anime.image_url} alt={anime.anime} />
-              <p id="title">{anime.name}</p>
-              <p id="status">
+              <p className="descriptor" id="title">
+                {anime.name}
+              </p>
+              <p className="descriptor" id="status">
                 {anime.status.slice(0, 1).toUpperCase() + anime.status.slice(1)}
               </p>
-              <p id="rating">{!anime.rating ? "N/A" : anime.rating}</p>
+              <p className="descriptor" id="rating">
+                {!anime.rating ? "N/A" : anime.rating}
+              </p>
             </Link>
           </li> // Use a unique key for each list item
         ))
