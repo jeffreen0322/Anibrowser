@@ -5,3 +5,9 @@
 .text-info > li {
   list-style-type: none;
 }
+
+@media (max-width: 350px) {
+  .text-info {
+    margin-left: -2em;
+  }
+}
