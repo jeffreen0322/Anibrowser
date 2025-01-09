@@ -41,7 +41,10 @@ export const AnimeTable = ({ userId }) => {
       {animeList.length > 0 ? (
         animeList.map((anime, key) => (
           <li key={key}>
-            <Link className="anime-container" to={`/anime/${anime.ani_id}`}>
+            <Link
+              className="anime-container entry"
+              to={`/anime/${anime.ani_id}`}
+            >
               <img src={anime.image_url} alt={anime.anime} />
               <p className="descriptor" id="title">
                 {anime.name}
