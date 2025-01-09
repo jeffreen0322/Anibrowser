@@ -2,3 +2,10 @@
   display: flex;
   justify-content: left;
 }
+
+@media (max-width: 350px) {
+  .trailer iframe {
+    width: 280px;
+    height: 210px;
+  }
+}
