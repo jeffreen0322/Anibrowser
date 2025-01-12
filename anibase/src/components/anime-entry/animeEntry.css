@@ -1,3 +1,12 @@
+@keyframes glow {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
 .ani-entry {
   opacity: 0.9;
   padding: 1rem;
@@ -5,11 +14,37 @@
   text-align: center;
   text-decoration: none;
   color: inherit;
+  position: relative;
+  overflow: hidden;
 }
 
 .ani-entry:hover {
   transform: scale(1.1);
   box-shadow: 0 0 20px 5px rgba(52, 152, 219, 0.7);
+}
+
+.ani-entry::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.ani-entry:hover::before {
+  opacity: 1;
+  animation: glow 1.5s ease;
 }
 
 .ani-entry > img {
