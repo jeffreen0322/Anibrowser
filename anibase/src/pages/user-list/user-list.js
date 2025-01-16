@@ -40,8 +40,10 @@ export default function UserListPage() {
   return (
     <div className="user-anime-list">
       <Category name={`${username}'s List`} />
-      <UserStats anilist={animeList} />
-      <AnimeTable anilist={animeList} />
+      <div className="ani-info">
+        <UserStats anilist={animeList} />
+        <AnimeTable anilist={animeList} />
+      </div>
     </div>
   );
 }

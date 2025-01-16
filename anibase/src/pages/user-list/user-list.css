@@ -2,3 +2,14 @@
   margin: 1rem;
   padding: 1rem;
 }
+
+.ani-info {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1129px) {
+  .ani-info {
+    align-items: center;
+  }
+}

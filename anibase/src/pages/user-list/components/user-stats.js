@@ -55,8 +55,10 @@ export const UserStats = ({ anilist }) => {
 
         <li className="stat-entry">
           <div className="entry-container">
-            <p>Average Rating</p>
-            <p>{averageRating === 0 ? "N/A" : averageRating}</p>
+            <p>Median Rating</p>
+            <p>
+              {averageRating === 0 || !averageRating ? `N/A` : averageRating}
+            </p>
           </div>
         </li>
       </ul>
