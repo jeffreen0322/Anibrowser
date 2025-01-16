@@ -1,32 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./anime-list.css";
-import axios from "axios";
 
-export const AnimeTable = ({ userId }) => {
-  const SERVER = "https://anibrowser-server.vercel.app";
-  const [animeList, setAnimeList] = useState([]); // State to hold the anime data
-
-  // Function to retrieve anime data
-  const retrieveAnimes = async () => {
-    try {
-      const response = await axios.get(`${SERVER}/get-full-anime-user`, {
-        params: { user_id: userId },
-      });
-      setAnimeList(response.data); // Update state with the retrieved data
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  // useEffect to fetch data when the component mounts or userId changes
-  useEffect(() => {
-    if (userId) {
-      retrieveAnimes();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId]);
-
+export const AnimeTable = ({ anilist }) => {
   // Render the component
   return (
     <ul className="list">
@@ -38,8 +14,8 @@ export const AnimeTable = ({ userId }) => {
           <p className="t-header">Rating</p>
         </div>
       </li>
-      {animeList.length > 0 ? (
-        animeList.map((anime, key) => (
+      {anilist.length > 0 ? (
+        anilist.map((anime, key) => (
           <li key={key}>
             <Link
               className="anime-container entry"
