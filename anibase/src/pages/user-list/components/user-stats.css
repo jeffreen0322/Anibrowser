@@ -6,10 +6,10 @@
   background: linear-gradient(110deg, #112341 45%, #1f3e6e 75%);
   border-radius: 10px;
   margin: 1rem;
-
   padding-top: 2rem;
   padding-left: 2rem;
   padding-right: 2rem;
+  padding-bottom: 1rem;
   height: fit-content;
 }
 
@@ -17,8 +17,38 @@
   text-align: center;
 }
 
+.stats-container ul {
+  list-style-type: none;
+}
+
+.stat-entry {
+  margin-top: 1rem;
+}
+
 .entry-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  /* border: solid whitesmoke 1px; */
+  border-radius: 10px;
+  margin-left: -2em;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+}
+
+.total {
+  background-color: rgb(165, 15, 15);
+}
+
+.watching {
+  background-color: green;
+}
+
+.completed {
+  background-color: #3c66a4;
+}
+
+.rating {
+  background-color: rgb(255, 94, 0);
 }
