@@ -34,28 +34,28 @@ export const UserStats = ({ anilist }) => {
     <div className="stats-container">
       <h3>Profile Statistics</h3>
       <ul>
-        <li className="stat-entry">
-          <div className="entry-container">
-            <p>Total Entries</p>
+        <li className="stat-entry-one">
+          <div className="entry-container total">
+            <strong>Total Entries</strong>
             <p>{anilist.length}</p>
           </div>
         </li>
         <li className="stat-entry">
-          <div className="entry-container">
-            <p>Watching</p>
+          <div className="entry-container watching">
+            <strong>Watching</strong>
             <p>{watchedCount}</p>
           </div>
         </li>
         <li className="stat-entry">
-          <div className="entry-container">
-            <p>Completed</p>
+          <div className="entry-container completed">
+            <strong>Completed</strong>
             <p>{completedCount}</p>
           </div>
         </li>
 
         <li className="stat-entry">
-          <div className="entry-container">
-            <p>Median Rating</p>
+          <div className="entry-container rating">
+            <strong>Median Rating</strong>
             <p>
               {averageRating === 0 || !averageRating ? `N/A` : averageRating}
             </p>
