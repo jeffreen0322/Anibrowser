@@ -1,11 +1,39 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
+import { Doughnut } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+
 import "./user-stats.css";
+
+// Register the required components
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const UserStats = ({ anilist }) => {
   const [watchedCount, setWatchedCount] = useState(0);
   const [completedCount, setCompletedCount] = useState(0);
   const [averageRating, setAverageRating] = useState(0);
+
+  const pieData = {
+    labels: ["Watching", "Completed"],
+    datasets: [
+      {
+        label: "Status",
+        data: [watchedCount, completedCount],
+        backgroundColor: ["green", "#3c66a4"],
+        hoverBackgroundColor: ["rgb(55, 186, 55)", "#6ea0ea"],
+      },
+    ],
+  };
+
+  const pieOptions = {
+    plugins: {
+      legend: {
+        labels: {
+          color: "whitesmoke",
+        },
+      },
+    },
+  };
 
   const getAmountStatus = (status) => {
     return anilist.filter((anime) => anime.status === status).length;
@@ -62,6 +90,8 @@ export const UserStats = ({ anilist }) => {
           </div>
         </li>
       </ul>
+
+      <Doughnut data={pieData} options={pieOptions} />
     </div>
   );
 };
