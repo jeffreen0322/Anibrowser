@@ -1,5 +1,6 @@
 .ani-info {
   display: flex;
+  justify-content: left !important;
   gap: 1rem;
   padding: 1rem;
 }
@@ -13,5 +14,6 @@
 @media (min-width: 320px) and (max-width: 1130px) {
   .ani-info {
     flex-direction: column;
+    justify-content: center !important;
   }
 }
