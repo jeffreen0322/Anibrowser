@@ -5,7 +5,7 @@
 
 .ani-info {
   display: flex;
-  justify-content: center;
+  justify-content: center !important;
 }
 
 @media (max-width: 1129px) {
