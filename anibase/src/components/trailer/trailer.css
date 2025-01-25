@@ -3,9 +3,9 @@
   justify-content: left;
 }
 
-@media (max-width: 350px) {
+@media (max-width: 436px) {
   .trailer iframe {
-    width: 280px;
-    height: 210px;
+    width: 320px;
+    height: 240px;
   }
 }

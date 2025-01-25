@@ -8,3 +8,10 @@
   width: 169px;
   border-color: #4167c6;
 }
+
+@media (min-width: 320px) and (max-width: 1130px) {
+  .add-container {
+    display: flex;
+    justify-content: center;
+  }
+}

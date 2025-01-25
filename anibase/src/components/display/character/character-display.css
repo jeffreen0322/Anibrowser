@@ -12,3 +12,9 @@
 #char-display:hover {
   box-shadow: 0 0 20px 5px rgba(52, 152, 219, 0.7);
 }
+
+@media (min-width: 320px) and (max-width: 1130px) {
+  #char-display {
+    align-self: center;
+  }
+}
